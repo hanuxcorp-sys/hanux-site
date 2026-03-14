@@ -1,77 +1,1328 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hanux Corp — Automatización e Inteligencia Artificial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Bricolage+Grotesque:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
 
-<title>Hanux Corp</title>
+/* ─────────────────────────────────────────
+   TOKENS — idénticos a la landing
+───────────────────────────────────────── */
+:root {
+  --blue:      #1F4ED8;
+  --blue-dark: #1740b0;
+  --green:     #16A34A;
+  --cta:       #22C55E;
+  --white:     #FFFFFF;
+  --gray-bg:   #F5F7FB;
+  --text:      #0F172A;
+  --muted:     #475569;
+  --border:    #E2E8F0;
+  --grad:      linear-gradient(135deg, #1F4ED8 0%, #22C55E 100%);
+  --grad-tech: linear-gradient(135deg, #0EA5E9 0%, #22C55E 100%);
+  --shadow:    0 4px 24px rgba(31,78,216,.10);
+  --shadow-lg: 0 12px 48px rgba(31,78,216,.15);
+  --font-display: 'Clash Display', sans-serif;
+  --font-body:    'Bricolage Grotesque', sans-serif;
+  --radius: 16px;
+  --nav-h: 72px;
+}
 
-<link rel="stylesheet" href="style.css">
+/* ─────────────────────────────────────────
+   RESET
+───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+button, input, textarea, select { font-family: inherit; font-size: inherit; border: none; outline: none; background: none; }
 
+/* ─────────────────────────────────────────
+   UTILITIES
+───────────────────────────────────────── */
+.container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+.section    { padding: 96px 0; }
+.section--alt { background: var(--gray-bg); }
+
+.label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: var(--font-display); font-size: 11px; font-weight: 600;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: var(--blue); margin-bottom: 20px;
+}
+.label::before { content: ''; width: 24px; height: 2px; background: var(--grad); border-radius: 2px; }
+
+h1,h2,h3,h4 { font-family: var(--font-display); line-height: 1.08; }
+
+.h1 { font-size: clamp(44px,7vw,80px); font-weight: 700; letter-spacing: -.03em; line-height: 1.0; }
+.h2 { font-size: clamp(30px,4.5vw,54px); font-weight: 700; letter-spacing: -.025em; }
+.h3 { font-size: 20px; font-weight: 600; letter-spacing: -.01em; margin-bottom: 8px; }
+
+.grad-text {
+  background: var(--grad);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.body-lg { font-size: 18px; line-height: 1.65; color: var(--muted); font-weight: 400; }
+.body-md { font-size: 15px; line-height: 1.65; color: var(--muted); }
+
+/* ─────────────────────────────────────────
+   BUTTONS
+───────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 26px; border-radius: 100px;
+  font-family: var(--font-display); font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: all .22s ease; white-space: nowrap;
+}
+.btn-primary { background: var(--grad); color: var(--white); box-shadow: 0 4px 20px rgba(34,197,94,.3); }
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(34,197,94,.45); }
+.btn-outline { border: 1.5px solid var(--border); color: var(--text); }
+.btn-outline:hover { border-color: var(--blue); color: var(--blue); background: rgba(31,78,216,.04); }
+.btn-ghost { color: var(--blue); font-weight: 600; }
+.btn-ghost:hover { text-decoration: underline; }
+.btn svg { flex-shrink: 0; }
+
+/* ─────────────────────────────────────────
+   NAVIGATION
+───────────────────────────────────────── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: var(--nav-h);
+  background: rgba(255,255,255,.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow .3s;
+}
+#nav.scrolled { box-shadow: var(--shadow); }
+
+.nav-inner {
+  height: 100%; display: flex; align-items: center;
+  justify-content: space-between; gap: 32px;
+}
+
+/* Logo */
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-size: 18px; font-weight: 700;
+  letter-spacing: -.02em; flex-shrink: 0;
+}
+.nav-logo-icon {
+  width: 36px; height: 36px; border-radius: 10px;
+  background: var(--grad);
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-logo-icon svg { width: 20px; height: 20px; }
+.nav-logo span { color: var(--blue); }
+
+/* Links */
+.nav-links {
+  display: flex; align-items: center; gap: 4px;
+  list-style: none;
+}
+.nav-links a {
+  padding: 7px 14px; border-radius: 8px;
+  font-size: 14px; font-weight: 500; color: var(--muted);
+  transition: color .18s, background .18s;
+}
+.nav-links a:hover { color: var(--text); background: var(--gray-bg); }
+.nav-links a.active { color: var(--blue); font-weight: 600; }
+
+/* Dropdown */
+.nav-item { position: relative; }
+.nav-dropdown {
+  position: absolute; top: calc(100% + 10px); left: 0;
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 8px;
+  min-width: 220px; box-shadow: var(--shadow-lg);
+  opacity: 0; pointer-events: none;
+  transform: translateY(-6px);
+  transition: opacity .18s, transform .18s;
+  z-index: 10;
+}
+.nav-item:hover .nav-dropdown { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.nav-dropdown a {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 8px;
+  font-size: 13.5px; color: var(--muted);
+  transition: background .15s, color .15s;
+}
+.nav-dropdown a:hover { background: var(--gray-bg); color: var(--text); }
+.nav-dropdown-icon {
+  width: 30px; height: 30px; border-radius: 8px;
+  background: var(--gray-bg); display: flex; align-items: center;
+  justify-content: center; font-size: 14px; flex-shrink: 0;
+}
+
+.nav-cta { display: flex; align-items: center; gap: 10px; }
+
+/* Burger */
+.nav-burger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; padding: 6px;
+}
+.nav-burger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .2s; }
+
+/* Mobile nav */
+.nav-mobile {
+  display: none; position: fixed;
+  top: var(--nav-h); left: 0; right: 0;
+  background: var(--white); border-bottom: 1px solid var(--border);
+  padding: 20px 28px 28px; z-index: 99;
+  box-shadow: var(--shadow-lg);
+}
+.nav-mobile.open { display: block; }
+.nav-mobile-links { list-style: none; display: flex; flex-direction: column; gap: 4px; margin-bottom: 20px; }
+.nav-mobile-links a {
+  display: block; padding: 10px 12px; border-radius: 8px;
+  font-size: 15px; font-weight: 500; color: var(--muted);
+}
+.nav-mobile-links a:hover { background: var(--gray-bg); color: var(--text); }
+
+/* ─────────────────────────────────────────
+   HERO
+───────────────────────────────────────── */
+#hero {
+  padding: calc(var(--nav-h) + 80px) 0 80px;
+  position: relative; overflow: hidden;
+}
+#hero::before {
+  content: ''; position: absolute; top: -150px; right: -150px;
+  width: 700px; height: 700px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(31,78,216,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+#hero::after {
+  content: ''; position: absolute; bottom: -80px; left: -80px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(34,197,94,.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 64px; align-items: center; position: relative; z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 14px; border-radius: 100px;
+  border: 1px solid var(--border); background: var(--gray-bg);
+  font-size: 12px; font-weight: 500; color: var(--muted);
+  margin-bottom: 24px;
+}
+.hero-badge-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--grad); }
+.hero-badge strong { color: var(--blue); }
+
+.hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 32px; }
+
+.hero-trust {
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 28px; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: var(--muted);
+}
+.trust-item svg { color: var(--green); flex-shrink: 0; }
+
+/* Hero visual */
+.hero-visual { position: relative; height: 440px; }
+.hero-card {
+  position: absolute; background: var(--white);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 20px 24px; box-shadow: var(--shadow-lg);
+  min-width: 210px; animation: floatCard 6s ease-in-out infinite;
+}
+.hero-card:nth-child(2) { animation-delay: -2s; animation-duration: 7s; }
+.hero-card:nth-child(3) { animation-delay: -4s; animation-duration: 8s; }
+.hero-card--a { top: 20px; left: 10px; z-index: 3; }
+.hero-card--b { top: 155px; right: 0; z-index: 2; }
+.hero-card--c { bottom: 50px; left: 50px; z-index: 4; }
+.card-lbl { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+.card-val { font-family: var(--font-display); font-size: 28px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1; }
+.card-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.card-bar { height: 5px; border-radius: 3px; background: var(--gray-bg); margin-top: 12px; overflow: hidden; }
+.card-fill { height: 100%; border-radius: 3px; background: var(--grad); }
+.grid-bg {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(31,78,216,.05) 1px, transparent 1px), linear-gradient(90deg, rgba(31,78,216,.05) 1px, transparent 1px);
+  background-size: 32px 32px; border-radius: var(--radius); z-index: 0;
+}
+@keyframes floatCard { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+
+/* ─────────────────────────────────────────
+   LOGOS / TRUSTED BY
+───────────────────────────────────────── */
+#logos { padding: 48px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.logos-label { text-align: center; font-size: 12px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 28px; }
+.logos-row { display: flex; align-items: center; justify-content: center; gap: 48px; flex-wrap: wrap; }
+.logo-pill {
+  font-family: var(--font-display); font-size: 15px; font-weight: 700;
+  color: var(--muted); letter-spacing: -.01em; opacity: .45;
+  transition: opacity .2s;
+}
+.logo-pill:hover { opacity: .75; }
+
+/* ─────────────────────────────────────────
+   ABOUT / QUIÉNES SOMOS
+───────────────────────────────────────── */
+.about-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.about-values { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
+.value-card {
+  padding: 20px; background: var(--white);
+  border: 1px solid var(--border); border-radius: var(--radius);
+  transition: border-color .2s, transform .2s;
+}
+.value-card:hover { border-color: rgba(31,78,216,.3); transform: translateY(-2px); }
+.value-icon { font-size: 24px; margin-bottom: 10px; }
+.value-title { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.value-desc { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+
+.about-stats { display: flex; flex-direction: column; gap: 20px; }
+.stat-big { padding: 28px 32px; border-radius: 20px; border: 1px solid var(--border); }
+.stat-big:first-child { background: var(--text); }
+.stat-num {
+  font-family: var(--font-display); font-size: 52px; font-weight: 700;
+  letter-spacing: -.03em; line-height: 1;
+  background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.stat-desc-dark { font-size: 14px; color: rgba(255,255,255,.6); margin-top: 6px; }
+.stat-desc { font-size: 14px; color: var(--muted); margin-top: 6px; }
+.stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.stat-sm { padding: 20px; border: 1px solid var(--border); border-radius: var(--radius); }
+.stat-sm-num { font-family: var(--font-display); font-size: 28px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-sm-desc { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+/* ─────────────────────────────────────────
+   SERVICES
+───────────────────────────────────────── */
+.services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 52px;
+}
+.service-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 20px; padding: 32px; overflow: hidden; position: relative;
+  transition: transform .22s, box-shadow .22s, border-color .22s;
+}
+.service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(31,78,216,.2); }
+.service-card--featured {
+  background: var(--text); border-color: transparent;
+  grid-column: span 1;
+}
+.service-card--featured:hover { border-color: rgba(31,78,216,.4); }
+.service-icon {
+  width: 48px; height: 48px; border-radius: 14px;
+  background: var(--grad); display: flex; align-items: center;
+  justify-content: center; font-size: 22px; margin-bottom: 20px;
+}
+.service-icon--dark { background: rgba(255,255,255,.1); }
+.service-tag {
+  display: inline-block; padding: 4px 10px; border-radius: 100px;
+  font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  background: rgba(31,78,216,.08); color: var(--blue); margin-bottom: 12px;
+}
+.service-tag--light { background: rgba(255,255,255,.1); color: rgba(255,255,255,.6); }
+.service-card h3 { margin-bottom: 10px; }
+.service-card--featured h3 { color: var(--white); }
+.service-card--featured .body-md { color: rgba(255,255,255,.6); }
+.service-list { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+.service-list li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 13.5px; color: var(--muted); line-height: 1.45;
+}
+.service-list li::before {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--grad); flex-shrink: 0; margin-top: 6px;
+}
+.service-card--featured .service-list li { color: rgba(255,255,255,.65); }
+.service-card--featured .service-list li::before { background: var(--cta); }
+.service-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 13px; font-weight: 600; color: var(--blue); margin-top: 20px;
+  transition: gap .18s;
+}
+.service-link:hover { gap: 10px; }
+.service-link--light { color: rgba(255,255,255,.7); }
+.service-link--light:hover { color: var(--white); }
+
+/* ─────────────────────────────────────────
+   HOW IT WORKS / METHODOLOGY
+───────────────────────────────────────── */
+.method-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: end; margin-bottom: 56px; }
+.method-steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.method-step-card {
+  padding: 28px; background: var(--white);
+  border: 1px solid var(--border); border-radius: 20px;
+  position: relative; transition: border-color .2s, transform .2s;
+}
+.method-step-card:hover { border-color: rgba(31,78,216,.25); transform: translateY(-3px); }
+.step-number {
+  font-family: var(--font-display); font-size: 48px; font-weight: 700; line-height: 1;
+  background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  opacity: .2; margin-bottom: 14px;
+}
+.step-title { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 6px; }
+.step-desc { font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+.step-connector {
+  position: absolute; top: 40px; right: -12px;
+  width: 24px; height: 24px; background: var(--white);
+  border: 1px solid var(--border); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: var(--blue); z-index: 1;
+}
+.method-step-card:last-child .step-connector { display: none; }
+
+/* ─────────────────────────────────────────
+   TEAM
+───────────────────────────────────────── */
+.team-intro { text-align: center; max-width: 560px; margin: 0 auto 52px; }
+.team-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.team-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 20px; overflow: hidden;
+  transition: transform .22s, box-shadow .22s;
+}
+.team-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.team-avatar {
+  height: 160px; display: flex; align-items: center; justify-content: center;
+  font-size: 56px;
+}
+.team-avatar--1 { background: linear-gradient(135deg, rgba(31,78,216,.12) 0%, rgba(34,197,94,.1) 100%); }
+.team-avatar--2 { background: linear-gradient(135deg, rgba(34,197,94,.12) 0%, rgba(14,165,233,.1) 100%); }
+.team-avatar--3 { background: linear-gradient(135deg, rgba(14,165,233,.12) 0%, rgba(31,78,216,.1) 100%); }
+.team-avatar--4 { background: linear-gradient(135deg, rgba(22,163,74,.12) 0%, rgba(34,197,94,.1) 100%); }
+.team-info { padding: 18px 20px; }
+.team-name { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text); }
+.team-role { font-size: 12.5px; color: var(--blue); font-weight: 500; margin: 3px 0 6px; }
+.team-bio { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+/* ─────────────────────────────────────────
+   TESTIMONIALS
+───────────────────────────────────────── */
+.testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+.testimonial {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 20px; padding: 28px; position: relative;
+  transition: border-color .2s, box-shadow .2s;
+}
+.testimonial:hover { border-color: rgba(31,78,216,.2); box-shadow: var(--shadow); }
+.testimonial::before {
+  content: '"'; position: absolute; top: 16px; right: 24px;
+  font-family: var(--font-display); font-size: 60px; font-weight: 700; line-height: 1;
+  background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  opacity: .2;
+}
+.testimonial-text { font-size: 14.5px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 12px; }
+.author-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--grad); display: flex; align-items: center;
+  justify-content: center; font-family: var(--font-display);
+  font-size: 14px; font-weight: 700; color: var(--white); flex-shrink: 0;
+}
+.author-name { font-family: var(--font-display); font-size: 14px; font-weight: 600; color: var(--text); }
+.author-role { font-size: 12px; color: var(--muted); }
+.metric-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 48px; }
+.metric { padding: 20px; background: var(--gray-bg); border-radius: var(--radius); text-align: center; }
+.metric-val { font-family: var(--font-display); font-size: 28px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.metric-desc { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+/* ─────────────────────────────────────────
+   CTA SECTION
+───────────────────────────────────────── */
+#cta-section {
+  background: var(--text); position: relative;
+  overflow: hidden; padding: 96px 0;
+}
+#cta-section::before {
+  content: ''; position: absolute; top: -300px; right: -200px;
+  width: 800px; height: 800px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(31,78,216,.25) 0%, transparent 65%);
+  pointer-events: none;
+}
+#cta-section::after {
+  content: ''; position: absolute; bottom: -200px; left: -150px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(34,197,94,.15) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cta-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; position: relative; z-index: 1; }
+.cta-left .h2 { color: var(--white); }
+.cta-left .body-lg { color: rgba(255,255,255,.65); margin-top: 18px; }
+.cta-bullets { list-style: none; display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+.cta-bullets li { display: flex; align-items: center; gap: 12px; font-size: 14.5px; color: rgba(255,255,255,.75); }
+.cta-check {
+  width: 20px; height: 20px; border-radius: 50%; flex-shrink: 0;
+  background: var(--grad); display: flex; align-items: center; justify-content: center;
+}
+.cta-check svg { width: 11px; height: 11px; }
+
+/* Form */
+.form-box {
+  background: var(--white); border-radius: 24px;
+  padding: 36px; box-shadow: 0 24px 80px rgba(0,0,0,.3);
+}
+.form-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+.form-sub { font-size: 13.5px; color: var(--muted); margin-bottom: 24px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.form-group.full { grid-column: 1 / -1; }
+.form-group label { font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 11px 14px; border: 1.5px solid var(--border); border-radius: 9px;
+  font-size: 13.5px; color: var(--text); background: var(--white);
+  transition: border-color .18s, box-shadow .18s;
+}
+.form-group input::placeholder, .form-group textarea::placeholder { color: #94A3B8; }
+.form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+  border-color: var(--blue); box-shadow: 0 0 0 3px rgba(31,78,216,.1);
+}
+.form-group textarea { resize: vertical; min-height: 88px; }
+.form-group select { cursor: pointer; }
+.btn-submit {
+  width: 100%; justify-content: center; padding: 15px;
+  border-radius: 10px; background: var(--grad); color: var(--white);
+  font-weight: 700; font-size: 15px; cursor: pointer; transition: all .22s;
+  box-shadow: 0 4px 20px rgba(34,197,94,.35); margin-top: 4px;
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-display);
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(34,197,94,.55); }
+.form-note { text-align: center; font-size: 12px; color: var(--muted); margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 5px; }
+.form-success { display: none; text-align: center; padding: 20px 0; }
+.form-success.show { display: block; }
+.form-success .check-icon {
+  width: 60px; height: 60px; border-radius: 50%; background: var(--grad);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 18px; font-size: 26px;
+  box-shadow: 0 4px 20px rgba(34,197,94,.4);
+}
+.form-success h3 { font-size: 20px; margin-bottom: 10px; }
+.form-success p { color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+/* ─────────────────────────────────────────
+   BLOG / RECURSOS
+───────────────────────────────────────── */
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+.blog-card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 20px; overflow: hidden;
+  transition: transform .22s, box-shadow .22s;
+}
+.blog-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.blog-thumb {
+  height: 160px; display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+}
+.blog-thumb--1 { background: linear-gradient(135deg, rgba(31,78,216,.1), rgba(34,197,94,.08)); }
+.blog-thumb--2 { background: linear-gradient(135deg, rgba(34,197,94,.1), rgba(14,165,233,.08)); }
+.blog-thumb--3 { background: linear-gradient(135deg, rgba(14,165,233,.1), rgba(31,78,216,.08)); }
+.blog-body { padding: 22px; }
+.blog-tag {
+  display: inline-block; padding: 3px 10px; border-radius: 100px;
+  font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  background: rgba(31,78,216,.07); color: var(--blue); margin-bottom: 10px;
+}
+.blog-title { font-family: var(--font-display); font-size: 16px; font-weight: 600; color: var(--text); line-height: 1.3; margin-bottom: 8px; }
+.blog-excerpt { font-size: 13px; color: var(--muted); line-height: 1.6; }
+.blog-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 16px; }
+.blog-date { font-size: 12px; color: var(--muted); }
+.blog-read { font-size: 12px; font-weight: 600; color: var(--blue); display: flex; align-items: center; gap: 4px; }
+
+/* ─────────────────────────────────────────
+   FOOTER
+───────────────────────────────────────── */
+#footer {
+  background: var(--text); color: rgba(255,255,255,.6);
+  padding: 64px 0 32px;
+}
+.footer-inner {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand { }
+.footer-logo {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 16px;
+  font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--white);
+}
+.footer-logo-icon {
+  width: 34px; height: 34px; border-radius: 9px;
+  background: var(--grad); display: flex; align-items: center; justify-content: center;
+}
+.footer-logo span { color: rgba(34,197,94,.8); }
+.footer-tagline { font-size: 14px; line-height: 1.65; max-width: 260px; }
+.footer-social { display: flex; gap: 10px; margin-top: 20px; }
+.social-btn {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; transition: background .18s;
+}
+.social-btn:hover { background: rgba(255,255,255,.14); }
+
+.footer-col h4 {
+  font-family: var(--font-display); font-size: 13px; font-weight: 700;
+  letter-spacing: .06em; text-transform: uppercase; color: var(--white);
+  margin-bottom: 16px;
+}
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 13.5px; color: rgba(255,255,255,.5); transition: color .18s; }
+.footer-links a:hover { color: rgba(255,255,255,.9); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding-top: 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-size: 12.5px; }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 12.5px; color: rgba(255,255,255,.4); transition: color .18s; }
+.footer-legal a:hover { color: rgba(255,255,255,.7); }
+
+/* ─────────────────────────────────────────
+   SCROLL REVEAL
+───────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s ease, transform .65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+
+/* ─────────────────────────────────────────
+   RESPONSIVE
+───────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .team-grid { grid-template-columns: 1fr 1fr; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+}
+@media (max-width: 900px) {
+  .hero-inner, .about-inner, .cta-inner, .method-intro { grid-template-columns: 1fr; gap: 40px; }
+  .hero-visual { height: 260px; }
+  .hero-card { transform: scale(.85); }
+  .method-steps-grid { grid-template-columns: 1fr 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links, .nav-cta { display: none; }
+  .nav-burger { display: flex; }
+}
+@media (max-width: 600px) {
+  .section { padding: 64px 0; }
+  .services-grid, .team-grid, .method-steps-grid, .blog-grid { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+  .hero-visual { display: none; }
+  .about-values { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; }
+  .metric-row { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: 1fr; }
+}
+</style>
 </head>
-
 <body>
 
-<header>
-<h1>Hanux Corp</h1>
-<p>Orquestación de tecnología, automatización e IA</p>
-</header>
+<!-- ════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════ -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
 
-<section class="hero">
+      <!-- Logo 
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-icon">
+          <svg viewBox="0 0 44 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="11" cy="12" rx="9" ry="11" fill="rgba(255,255,255,.9)"/>
+            <ellipse cx="33" cy="12" rx="9" ry="11" fill="rgba(255,255,255,.7)"/>
+            <ellipse cx="22" cy="10" rx="7" ry="8" fill="white"/>
+          </svg>
+        </div>
+        HANUX <span>CORP</span>
+      </a>
+-->
+      <!-- Links -->
+      <ul class="nav-links">
+        <li><a href="#" class="active">Inicio</a></li>
+        <li class="nav-item">
+          <a href="#servicios">Servicios ▾</a>
+          <div class="nav-dropdown">
+            <a href="#servicios"><div class="nav-dropdown-icon">⚙️</div>Automatización de procesos</a>
+            <a href="#servicios"><div class="nav-dropdown-icon">🔗</div>Integración de sistemas</a>
+            <a href="#servicios"><div class="nav-dropdown-icon">🤖</div>Agentes de IA</a>
+            <a href="#servicios"><div class="nav-dropdown-icon">📊</div>Dashboards inteligentes</a>
+          </div>
+        </li>
+        <li><a href="#metodologia">Metodología</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
 
-<h2>Transformamos procesos empresariales</h2>
+      <!-- CTA -->
+      <div class="nav-cta">
+        <a href="#contacto" class="btn btn-primary" style="padding:10px 20px; font-size:13px;">
+          Solicitar diagnóstico
+        </a>
+      </div>
 
-<p>
-Ayudamos a empresas a automatizar procesos,
-integrar sistemas e implementar inteligencia artificial
-para mejorar su eficiencia operativa.
-</p>
+      <!-- Burger -->
+      <div class="nav-burger" onclick="toggleMenu()" id="burger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+</nav>
 
-<button>Solicitar diagnóstico</button>
+<!-- Mobile menu -->
+<div class="nav-mobile" id="mobile-menu">
+  <ul class="nav-mobile-links">
+    <li><a href="#" onclick="toggleMenu()">Inicio</a></li>
+    <li><a href="#servicios" onclick="toggleMenu()">Servicios</a></li>
+    <li><a href="#metodologia" onclick="toggleMenu()">Metodología</a></li>
+    <li><a href="#nosotros" onclick="toggleMenu()">Nosotros</a></li>
+    <li><a href="#blog" onclick="toggleMenu()">Blog</a></li>
+    <li><a href="#contacto" onclick="toggleMenu()">Contacto</a></li>
+  </ul>
+  <a href="#contacto" class="btn btn-primary" style="width:100%; justify-content:center;" onclick="toggleMenu()">Solicitar diagnóstico</a>
+</div>
 
+<!-- ════════════════════════════════════
+     HERO
+════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-badge">
+          <span class="hero-badge-dot"></span>
+          <strong>Nuevo</strong> — Agentes de IA para operaciones empresariales
+        </div>
+        <div class="label">Hanux Corp — Automatización e IA</div>
+        <h1 class="h1">
+          Automatiza procesos<br>
+          y escala tu empresa<br>
+          <span class="grad-text">con IA</span>
+        </h1>
+        <p class="body-lg" style="margin-top:22px; max-width:480px;">
+          En Hanux Corp analizamos tus operaciones, identificamos oportunidades de automatización e implementamos soluciones de <strong style="color:var(--text);">inteligencia artificial</strong> que <strong style="color:var(--text);">eliminan tareas manuales</strong> y aumentan la productividad.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contacto" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+            Solicitar diagnóstico estratégico
+          </a>
+          <a href="#servicios" class="btn btn-outline">Ver servicios</a>
+        </div>
+        <div class="hero-trust">
+          <div class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Diagnóstico estratégico profesional
+          </div>
+          <div class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Implementación 100% personalizada
+          </div>
+          <div class="trust-item">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            Soporte y acompañamiento continuo
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="grid-bg"></div>
+        <div class="hero-card hero-card--a">
+          <div class="card-lbl">Eficiencia operativa</div>
+          <div class="card-val">+60%</div>
+          <div class="card-sub">reducción de tareas manuales</div>
+          <div class="card-bar"><div class="card-fill" style="width:82%"></div></div>
+        </div>
+        <div class="hero-card hero-card--b">
+          <div class="card-lbl">Procesos activos</div>
+          <div class="card-val">127</div>
+          <div class="card-sub">corriendo sin intervención</div>
+        </div>
+        <div class="hero-card hero-card--c">
+          <div class="card-lbl">ROI promedio</div>
+          <div class="card-val">3.4×</div>
+          <div class="card-sub">primeros 6 meses</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="services">
+<!-- ════════════════════════════════════
+     LOGOS / TRUSTED BY
+════════════════════════════════════ 
+  <div class="container">
+    <p class="logos-label">Empresas que confían en Hanux Corp</p>
+    <div class="logos-row">
+      <div class="logo-pill">TechFlow</div>
+      <div class="logo-pill">Meridian Group</div>
+      <div class="logo-pill">Nexus Solutions</div>
+      <div class="logo-pill">Aura Digital</div>
+      <div class="logo-pill">CoreOps</div>
+      <div class="logo-pill">Vantage Co.</div>
+    </div>
+  </div>
+</section>
+-->
+<section id="logos">
+<!-- ════════════════════════════════════
+     QUIÉNES SOMOS
+════════════════════════════════════ -->
+<section id="nosotros" class="section section--alt">
+  <div class="container">
+    <div class="about-inner">
+      <div class="reveal">
+        <div class="label">Quiénes somos</div>
+        <h2 class="h2">Construimos operaciones<br><span class="grad-text">inteligentes</span></h2>
+        <p class="body-lg" style="margin-top:16px;">
+          Hanux Corp es una empresa especializada en automatización e inteligencia artificial para negocios. Combinamos tecnología de punta con un enfoque profundamente estratégico para transformar cómo operan las empresas.
+        </p>
+        <p class="body-md" style="margin-top:16px;">
+          Nuestra misión es que cada empresa pueda escalar sin que el crecimiento dependa directamente de aumentar costos operativos. Lo hacemos conectando datos, procesos y sistemas en operaciones inteligentes impulsadas por IA.
+        </p>
+        <div class="about-values">
+          <div class="value-card">
+            <div class="value-icon">🎯</div>
+            <div class="value-title">Enfoque estratégico</div>
+            <div class="value-desc">Priorizamos el impacto de negocio antes que la tecnología.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">⚡</div>
+            <div class="value-title">Ejecución rápida</div>
+            <div class="value-desc">De diagnóstico a resultados en semanas, no meses.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🔒</div>
+            <div class="value-title">Confianza y seguridad</div>
+            <div class="value-desc">Construimos con estándares de seguridad empresarial.</div>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🔁</div>
+            <div class="value-title">Mejora continua</div>
+            <div class="value-desc">Acompañamos y optimizamos mucho más allá del lanzamiento.</div>
+          </div>
+        </div>
+      </div>
 
-<h2>Servicios</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Diagnóstico tecnológico</h3>
-<p>Evaluamos procesos y detectamos oportunidades de automatización.</p>
-</div>
-
-<div class="card">
-<h3>Automatización</h3>
-<p>Integramos sistemas y automatizamos procesos empresariales.</p>
-</div>
-
-<div class="card">
-<h3>Implementación de IA</h3>
-<p>Aplicamos inteligencia artificial para optimizar decisiones.</p>
-</div>
-
-</div>
-
+      <div class="about-stats reveal reveal-d1">
+        <div class="stat-big" style="background:var(--text);">
+          <div class="stat-num">+127</div>
+          <div class="stat-desc-dark">Automatizaciones implementadas en producción para clientes activos.</div>
+        </div>
+        <div class="stats-row">
+          <div class="stat-sm">
+            <div class="stat-sm-num">3.4×</div>
+            <div class="stat-sm-desc">ROI promedio en los primeros 6 meses</div>
+          </div>
+          <div class="stat-sm">
+            <div class="stat-sm-num">+60%</div>
+            <div class="stat-sm-desc">Reducción de tiempo en tareas operativas</div>
+          </div>
+          <div class="stat-sm">
+            <div class="stat-sm-num">8 sem</div>
+            <div class="stat-sm-desc">Tiempo promedio de implementación</div>
+          </div>
+          <div class="stat-sm">
+            <div class="stat-sm-num">24/7</div>
+            <div class="stat-sm-desc">Procesos corriendo sin intervención humana</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="cta">
+<!-- ════════════════════════════════════
+     SERVICIOS
+════════════════════════════════════ -->
+<section id="servicios" class="section">
+  <div class="container">
+    <div class="reveal" style="text-align:center; max-width:600px; margin:0 auto;">
+      <div class="label" style="justify-content:center;">Nuestros servicios</div>
+      <h2 class="h2">Todo lo que necesitas para<br><span class="grad-text">automatizar tu empresa</span></h2>
+      <p class="body-lg" style="margin-top:14px;">Desde el diagnóstico hasta la implementación y el soporte continuo.</p>
+    </div>
+    <div class="services-grid reveal">
 
-<h2>Agenda un diagnóstico tecnológico</h2>
+      <div class="service-card service-card--featured">
+        <div class="service-icon service-icon--dark">⚙️</div>
+        <div class="service-tag service-tag--light">Core</div>
+        <h3 class="h3" style="color:var(--white);">Automatización de Procesos</h3>
+        <p class="body-md" style="color:rgba(255,255,255,.6);">Diseñamos e implementamos flujos automatizados que ejecutan tus operaciones sin intervención humana.</p>
+        <ul class="service-list">
+          <li>Automatización de workflows completos</li>
+          <li>Procesos administrativos y operativos</li>
+          <li>Flujos de aprobación automáticos</li>
+          <li>Conciliaciones y reportes automáticos</li>
+        </ul>
+        <a href="#contacto" class="service-link service-link--light">Solicitar diagnóstico →</a>
+      </div>
 
-<p>Descubre cómo automatizar tu empresa.</p>
+      <div class="service-card">
+        <div class="service-icon">🔗</div>
+        <div class="service-tag">Integración</div>
+        <h3 class="h3">Integración de Sistemas</h3>
+        <p class="body-md">Conectamos todas tus herramientas para que trabajen juntas y los datos fluyan sin fricciones.</p>
+        <ul class="service-list">
+          <li>Integración de APIs y plataformas</li>
+          <li>Conexión CRM, ERP y herramientas internas</li>
+          <li>Sincronización de datos en tiempo real</li>
+          <li>Middleware y conectores personalizados</li>
+        </ul>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
 
-<button>Solicitar reunión</button>
+      <div class="service-card">
+        <div class="service-icon">🤖</div>
+        <div class="service-tag">IA</div>
+        <h3 class="h3">Agentes e IA Generativa</h3>
+        <p class="body-md">Implementamos agentes de inteligencia artificial que ejecutan tareas complejas de forma autónoma.</p>
+        <ul class="service-list">
+          <li>Agentes de IA para tareas específicas</li>
+          <li>LLMs integrados a tus operaciones</li>
+          <li>Análisis y procesamiento de documentos</li>
+          <li>Chatbots empresariales con contexto</li>
+        </ul>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
 
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <div class="service-tag">Datos</div>
+        <h3 class="h3">Dashboards Inteligentes</h3>
+        <p class="body-md">Centraliza la información clave de tu negocio y toma decisiones con datos en tiempo real.</p>
+        <ul class="service-list">
+          <li>Dashboards conectados a tus sistemas</li>
+          <li>Reportes automatizados periódicos</li>
+          <li>KPIs y alertas inteligentes</li>
+          <li>Visualización de datos operativos</li>
+        </ul>
+        <a href="#contacto" class="service-link">Saber más →</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <div class="service-tag">Diagnóstico</div>
+        <h3 class="h3">Diagnóstico Estratégico</h3>
+        <p class="body-md">Auditamos tus operaciones para identificar las automatizaciones de mayor impacto y ROI.</p>
+        <ul class="service-list">
+          <li>Auditoría de procesos operativos</li>
+          <li>Mapeo de flujos y cuellos de botella</li>
+          <li>Evaluación del stack tecnológico</li>
+          <li>Roadmap priorizado de implementación</li>
+        </ul>
+        <a href="#contacto" class="service-link">Solicitar diagnóstico →</a>
+      </div>
+
+    </div>
+  </div>
 </section>
 
-<footer>
+<!-- ════════════════════════════════════
+     METODOLOGÍA
+════════════════════════════════════
+<section id="metodologia" class="section section--alt">
+  <div class="container">
+    <div class="method-intro reveal">
+      <div>
+        <div class="label">Metodología</div>
+        <h2 class="h2">Nuestro enfoque<br><span class="grad-text">paso a paso</span></h2>
+      </div>
+      <div>
+        <p class="body-lg">Un proceso estructurado que garantiza resultados concretos desde la primera semana de trabajo conjunto.</p>
+        <a href="#contacto" class="btn btn-primary" style="margin-top:24px;">Comenzar ahora</a>
+      </div>
+    </div>
+    <div class="method-steps-grid reveal">
+      <div class="method-step-card">
+        <div class="step-number">01</div>
+        <div class="step-title">Diagnóstico del negocio</div>
+        <div class="step-desc">Analizamos en profundidad tus operaciones, objetivos y puntos de dolor para entender dónde está el mayor potencial de automatización.</div>
+        <div class="step-connector">→</div>
+      </div>
+      <div class="method-step-card">
+        <div class="step-number">02</div>
+        <div class="step-title">Identificación de alto impacto</div>
+        <div class="step-desc">Priorizamos las automatizaciones con mayor retorno inmediato y elaboramos un roadmap claro con estimaciones de impacto por proceso.</div>
+        <div class="step-connector">→</div>
+      </div>
+      <div class="method-step-card">
+        <div class="step-number">03</div>
+        <div class="step-title">Diseño de arquitectura</div>
+        <div class="step-desc">Definimos la solución técnica óptima: qué herramientas, qué integraciones y qué lógica necesita cada automatización.</div>
+        <div class="step-connector">→</div>
+      </div>
+      <div class="method-step-card">
+        <div class="step-number">04</div>
+        <div class="step-title">Implementación técnica</div>
+        <div class="step-desc">Construimos e integramos las automatizaciones directamente en tu stack actual, sin reemplazar lo que ya funciona.</div>
+        <div class="step-connector">→</div>
+      </div>
+      <div class="method-step-card">
+        <div class="step-number">05</div>
+        <div class="step-title">Pruebas y optimización</div>
+        <div class="step-desc">Validamos cada proceso con datos reales, medimos resultados y ajustamos hasta lograr el rendimiento esperado.</div>
+        <div class="step-connector">→</div>
+      </div>
+      <div class="method-step-card">
+        <div class="step-number">06</div>
+        <div class="step-title">Acompañamiento continuo</div>
+        <div class="step-desc">Monitoreamos, mejoramos y expandimos las automatizaciones a medida que tu empresa crece y evoluciona.</div>
+      </div>
+    </div>
+  </div>
+</section>
+ -->
+<!-- ════════════════════════════════════
+     EQUIPO
+════════════════════════════════════
+<section class="section">
+  <div class="container">
+    <div class="team-intro reveal">
+      <div class="label" style="justify-content:center;">El equipo</div>
+      <h2 class="h2">Las personas detrás de<br><span class="grad-text">Hanux Corp</span></h2>
+      <p class="body-lg" style="margin-top:14px;">Un equipo multidisciplinario con experiencia en tecnología, automatización, IA y estrategia de negocios.</p>
+    </div>
+    <div class="team-grid reveal">
+      <div class="team-card">
+        <div class="team-avatar team-avatar--1">👨‍💼</div>
+        <div class="team-info">
+          <div class="team-name">Carlos Mendoza</div>
+          <div class="team-role">CEO & Estrategia</div>
+          <div class="team-bio">10+ años liderando transformación digital en empresas de toda Latinoamérica.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar team-avatar--2">👩‍💻</div>
+        <div class="team-info">
+          <div class="team-name">Andrea Torres</div>
+          <div class="team-role">CTO & Arquitectura</div>
+          <div class="team-bio">Especialista en integraciones complejas, APIs y arquitectura de sistemas automatizados.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar team-avatar--3">👨‍🔬</div>
+        <div class="team-info">
+          <div class="team-name">Luis Ramírez</div>
+          <div class="team-role">Lead AI Engineer</div>
+          <div class="team-bio">Experto en LLMs, agentes de IA y sistemas de procesamiento de lenguaje natural aplicado.</div>
+        </div>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar team-avatar--4">👩‍📊</div>
+        <div class="team-info">
+          <div class="team-name">Valentina Cruz</div>
+          <div class="team-role">Ops & Procesos</div>
+          <div class="team-bio">Consultora especializada en mapeo de procesos, auditorías operativas y gestión del cambio.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ -->
+<!-- ════════════════════════════════════
+     TESTIMONIOS
+════════════════════════════════════ -->
+<section class="section section--alt">
+  <div class="container">
+    <div class="reveal">
+      <div class="label">Prueba social</div>
+      <h2 class="h2">Empresas que ya<br><span class="grad-text">automatizaron</span></h2>
+    </div>
+    <div class="metric-row reveal" style="max-width:600px; margin-top:36px;">
+      <div class="metric"><div class="metric-val">+60%</div><div class="metric-desc">Reducción de tiempo operativo</div></div>
+      <div class="metric"><div class="metric-val">3.4×</div><div class="metric-desc">ROI promedio</div></div>
+      <div class="metric"><div class="metric-val">127+</div><div class="metric-desc">Procesos automatizados</div></div>
+    </div>
+    <div class="testimonials-grid reveal">
+      <div class="testimonial">
+        <p class="testimonial-text">Reducimos más del 60% del tiempo dedicado a tareas operativas. El equipo ahora se enfoca en lo que realmente importa para el negocio.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">AM</div>
+          <div><div class="author-name">Andrea M.</div><div class="author-role">COO — Empresa de logística</div></div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">Integraron nuestro CRM con el ERP y automatizaron todo el flujo de onboarding. Lo que tardaba 3 días ahora ocurre en minutos sin intervención humana.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">CR</div>
+          <div><div class="author-name">Carlos R.</div><div class="author-role">CEO — SaaS B2B</div></div>
+        </div>
+      </div>
+      <div class="testimonial">
+        <p class="testimonial-text">Las conciliaciones bancarias que nos tomaban 2 días completos ahora se ejecutan automáticamente cada noche. Un antes y un después para nuestro equipo de administración.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">LV</div>
+          <div><div class="author-name">Laura V.</div><div class="author-role">Directora de Ops — Retail</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<p>© 2026 Hanux Corp</p>
+<!-- ════════════════════════════════════
+     BLOG / RECURSOS
+════════════════════════════════════ -->
+<section id="blog" class="section">
+  <div class="container">
+    <div class="reveal" style="display:flex; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; gap:20px; margin-bottom:0;">
+      <div>
+        <div class="label">Blog & Recursos</div>
+        <h2 class="h2">Insights sobre<br><span class="grad-text">automatización e IA</span></h2>
+      </div>
+      <a href="#" class="btn btn-outline">Ver todos los artículos →</a>
+    </div>
+    <div class="blog-grid reveal">
+      <div class="blog-card">
+        <div class="blog-thumb blog-thumb--1">⚙️</div>
+        <div class="blog-body">
+          <div class="blog-tag">Automatización</div>
+          <div class="blog-title">Cómo automatizar las conciliaciones bancarias en 3 pasos</div>
+          <div class="blog-excerpt">Las conciliaciones manuales consumen hasta 2 días de trabajo por semana. Así es cómo las empresas las están eliminando con IA.</div>
+          <div class="blog-meta">
+            <span class="blog-date">12 Feb 2025</span>
+            <a href="#" class="blog-read">Leer más →</a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb blog-thumb--2">🤖</div>
+        <div class="blog-body">
+          <div class="blog-tag">Inteligencia Artificial</div>
+          <div class="blog-title">Agentes de IA para empresas: qué son y cómo usarlos hoy</div>
+          <div class="blog-excerpt">Los agentes de IA ya no son solo una promesa futura. En este artículo explicamos casos concretos de implementación en operaciones reales.</div>
+          <div class="blog-meta">
+            <span class="blog-date">28 Ene 2025</span>
+            <a href="#" class="blog-read">Leer más →</a>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-thumb blog-thumb--3">📊</div>
+        <div class="blog-body">
+          <div class="blog-tag">Estrategia</div>
+          <div class="blog-title">Las 5 áreas de tu empresa que más se benefician con la automatización</div>
+          <div class="blog-excerpt">Ventas, administración, marketing, operaciones y soporte: analizamos el impacto real de la automatización en cada una.</div>
+          <div class="blog-meta">
+            <span class="blog-date">15 Ene 2025</span>
+            <a href="#" class="blog-read">Leer más →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
+<!-- ════════════════════════════════════
+     CTA + FORM
+════════════════════════════════════ -->
+<section id="contacto" class="section" style="background:var(--text); padding:96px 0;">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-left reveal">
+        <div class="label" style="color:rgba(255,255,255,.4);">Comienza hoy</div>
+        <h2 class="h2" style="color:var(--white);">Comienza a automatizar<br>tu empresa</h2>
+        <p class="body-lg" style="color:rgba(255,255,255,.65); margin-top:18px;">
+          Agenda un diagnóstico estratégico con nuestro equipo para analizar tus procesos y descubrir cómo la automatización y la IA pueden transformar tu operación.
+        </p>
+        <ul class="cta-bullets">
+          <li>
+            <div class="cta-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Diagnóstico estratégico profesional
+          </li>
+          <li>
+            <div class="cta-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Plan personalizado para tu empresa
+          </li>
+          <li>
+            <div class="cta-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Roadmap de implementación claro
+          </li>
+          <li>
+            <div class="cta-check"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+            Acompañamiento en todo el proceso
+          </li>
+        </ul>
+      </div>
+
+      <div class="form-box reveal reveal-d1">
+        <div id="form-content">
+          <div class="form-title">Solicitar diagnóstico</div>
+          <div class="form-sub">Te contactamos en menos de 24 horas.</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nombre</label>
+              <input type="text" id="f-name" placeholder="Tu nombre completo">
+            </div>
+            <div class="form-group">
+              <label>Empresa</label>
+              <input type="text" id="f-company" placeholder="Nombre de tu empresa">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" id="f-email" placeholder="tu@empresa.com">
+            </div>
+            <div class="form-group">
+              <label>Teléfono</label>
+              <input type="tel" id="f-phone" placeholder="+1 000 000 0000">
+            </div>
+            <div class="form-group full">
+              <label>¿Qué te interesa?</label>
+              <select id="f-interest">
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option>Automatización de procesos</option>
+                <option>Integración de sistemas</option>
+                <option>Agentes de IA</option>
+                <option>Diagnóstico estratégico completo</option>
+              </select>
+            </div>
+            <div class="form-group full">
+              <label>¿Qué proceso quieres automatizar?</label>
+              <textarea id="f-desc" placeholder="Describe brevemente el área donde necesitas ayuda..."></textarea>
+            </div>
+          </div>
+          <button class="btn-submit" onclick="submitForm()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V6a2 2 0 012-2z"/></svg>
+            Solicitar diagnóstico estratégico
+          </button>
+          <div class="form-note">🔒 Tus datos están seguros y no serán compartidos.</div>
+        </div>
+        <div class="form-success" id="form-success">
+          <div class="check-icon">✓</div>
+          <h3>¡Solicitud enviada!</h3>
+          <p>Gracias por contactar a Hanux Corp. Un especialista te escribirá en menos de 24 horas para coordinar tu diagnóstico estratégico.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════
+     FOOTER
+════════════════════════════════════ -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-inner">
+
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <div class="footer-logo-icon">
+            <svg viewBox="0 0 44 36" fill="none" width="20" height="16">
+              <ellipse cx="11" cy="12" rx="9" ry="11" fill="rgba(255,255,255,.9)"/>
+              <ellipse cx="33" cy="12" rx="9" ry="11" fill="rgba(255,255,255,.7)"/>
+              <ellipse cx="22" cy="10" rx="7" ry="8" fill="white"/>
+            </svg>
+          </div>
+          HANUX <span>CORP</span>
+        </div>
+        <p class="footer-tagline">Automatización e inteligencia artificial para empresas que quieren escalar sin depender de más personas, más tiempo y más costo.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">𝕏</a>
+          <a href="#" class="social-btn">ig</a>
+          <a href="#" class="social-btn">yt</a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Servicios</h4>
+        <ul class="footer-links">
+          <li><a href="#servicios">Automatización de procesos</a></li>
+          <li><a href="#servicios">Integración de sistemas</a></li>
+          <li><a href="#servicios">Agentes de IA</a></li>
+          <li><a href="#servicios">Diagnóstico estratégico</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul class="footer-links">
+          <li><a href="#nosotros">Quiénes somos</a></li>
+          <li><a href="#blog">Blog</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <ul class="footer-links">
+          <li><a href="mailto:hola@hanuxcorp.com">hola@hanuxcorp.com</a></li>
+          <li><a href="tel:+543516466666">+54 351 646 6666</a></li>
+          <li><a href="#contacto">Agendar reunión</a></li>
+          <li><a href="#contacto">Solicitar diagnóstico</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Hanux Corp. Todos los derechos reservados.</span>
+      <div class="footer-legal">
+        <a href="#">Política de privacidad</a>
+        <a href="#">Términos de uso</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
+<script>
+/* Navbar scroll */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 10);
+});
+
+/* Mobile menu */
+function toggleMenu() {
+  document.getElementById('mobile-menu').classList.toggle('open');
+}
+
+/* Form submit */
+function submitForm() {
+  const name  = document.getElementById('f-name').value.trim();
+  const email = document.getElementById('f-email').value.trim();
+  if (!name || !email) {
+    ['f-name','f-email'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.style.borderColor = '#ef4444';
+        el.style.boxShadow = '0 0 0 3px rgba(239,68,68,.1)';
+        setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 2500);
+      }
+    });
+    return;
+  }
+  document.getElementById('form-content').style.display = 'none';
+  document.getElementById('form-success').classList.add('show');
+}
+
+/* Scroll reveal */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
