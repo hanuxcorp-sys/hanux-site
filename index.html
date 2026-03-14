@@ -676,8 +676,12 @@ html{scroll-behavior:smooth;}
 
         <!-- reCAPTCHA v2 -->
         <div class="form-group">
-          <div id="hx-recaptcha" class="g-recaptcha" data-sitekey="6LeGqoosAAAAAGL8zoXNyWbDa25PMSz8wBRzUqO0" data-theme="light"></div>
-          <p id="recaptcha-error" style="display:none;color:#e24b4a;font-size:12px;margin-top:6px;">Por favor confirmá que no sos un robot.</p>
+          <!-- reCAPTCHA DESACTIVADO — activar cuando el dominio esté configurado:
+               1. Quitá los comentarios de las 2 líneas de abajo
+               2. Reemplazá TU_RECAPTCHA_SITE_KEY por tu clave real
+               3. Descomentá el <script> de recaptcha/api.js más abajo -->
+          <!-- <div id="hx-recaptcha" class="g-recaptcha" data-sitekey="TU_RECAPTCHA_SITE_KEY" data-theme="light"></div> -->
+          <!-- <p id="recaptcha-error" style="display:none;color:#e24b4a;font-size:12px;margin-top:6px;">Por favor confirmá que no sos un robot.</p> -->
         </div>
 
         <button class="form-submit" id="hx-submit" onclick="hanuxEnviar(event)">Solicitar diagnóstico →</button>
@@ -729,7 +733,9 @@ html{scroll-behavior:smooth;}
 </footer>
 
 <!-- reCAPTCHA API -->
+<!-- reCAPTCHA API — descomentá cuando actives el widget arriba
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+-->
 
 <script>
 /* ----------------------------------------------------------
