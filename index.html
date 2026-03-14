@@ -668,20 +668,10 @@ html{scroll-behavior:smooth;}
           <label>¿Cuál es tu principal desafío operativo?</label>
           <textarea id="hx-desafio" placeholder="Contanos brevemente qué procesos o integraciones son los más problemáticos en tu operación..."></textarea>
         </div>
-        <!-- HONEYPOT: campo trampa invisible para bots -->
+        <!-- HONEYPOT: campo trampa invisible para bots — los humanos no lo ven ni lo completan -->
         <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true">
-          <label>No completar este campo</label>
-          <input type="text" id="hx-trap" name="website" tabindex="-1" autocomplete="off" />
-        </div>
-
-        <!-- reCAPTCHA v2 -->
-        <div class="form-group">
-          <!-- reCAPTCHA DESACTIVADO — activar cuando el dominio esté configurado:
-               1. Quitá los comentarios de las 2 líneas de abajo
-               2. Reemplazá TU_RECAPTCHA_SITE_KEY por tu clave real
-               3. Descomentá el <script> de recaptcha/api.js más abajo -->
-          <!-- <div id="hx-recaptcha" class="g-recaptcha" data-sitekey="TU_RECAPTCHA_SITE_KEY" data-theme="light"></div> -->
-          <!-- <p id="recaptcha-error" style="display:none;color:#e24b4a;font-size:12px;margin-top:6px;">Por favor confirmá que no sos un robot.</p> -->
+          <label for="hx-empresa-confirm">No completar este campo</label>
+          <input type="text" id="hx-empresa-confirm" name="empresa_confirm" tabindex="-1" autocomplete="off" />
         </div>
 
         <button class="form-submit" id="hx-submit" onclick="hanuxEnviar(event)">Solicitar diagnóstico →</button>
@@ -732,16 +722,7 @@ html{scroll-behavior:smooth;}
   </div>
 </footer>
 
-<!-- reCAPTCHA API -->
-<!-- reCAPTCHA API — descomentá cuando actives el widget arriba
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
--->
-
 <script>
-/* ----------------------------------------------------------
-   HANUX CORP — navegación + formulario
----------------------------------------------------------- */
-
 /* CONFIGURACIÓN — editá solo estas dos líneas */
 var FORMSPREE_ENDPOINT = "https://formspree.io/f/TU_ENDPOINT_FORMSPREE";
 var EMAIL_DESTINO      = "hola@hanuxcorp.com";
@@ -754,14 +735,16 @@ function hanuxIrA(destino, btn) {
   }
   var el = document.querySelector(destino);
   if (el) {
-    var offset = 80;
-    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - 80;
     window.scrollTo({ top: top, behavior: "smooth" });
   }
 }
 
-/* Validación del formulario */
+/* Validación + control honeypot */
 function hanuxValidar() {
+  /* HONEYPOT: si el campo trampa tiene contenido, es un bot */
+  if (document.getElementById("hx-empresa-confirm").value) { return false; }
+
   var nombre  = document.getElementById("hx-nombre").value.trim();
   var email   = document.getElementById("hx-email").value.trim();
   var empresa = document.getElementById("hx-empresa").value.trim();
@@ -785,7 +768,6 @@ function hanuxDatos() {
   };
 }
 
-/* Mostrar mensaje de éxito */
 function hanuxMostrarExito() {
   document.getElementById("form-error").style.display   = "none";
   document.getElementById("form-success").style.display = "block";
@@ -793,7 +775,6 @@ function hanuxMostrarExito() {
   document.getElementById("form-success").scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-/* Mostrar mensaje de error */
 function hanuxMostrarError() {
   document.getElementById("form-error").style.display = "block";
   document.getElementById("form-error").scrollIntoView({ behavior: "smooth", block: "center" });
@@ -804,33 +785,11 @@ function hanuxEnviar(e) {
   e.preventDefault();
   if (!hanuxValidar()) return;
 
-  /* CAPA 1: Honeypot — si el campo trampa tiene contenido es un bot */
-  var trap = document.getElementById("hx-trap");
-  if (trap && trap.value !== "") {
-    /* Bot detectado: simulamos éxito silenciosamente */
-    hanuxMostrarExito();
-    return;
-  }
-
-  /* CAPA 2: reCAPTCHA — verificar que el usuario lo completó */
-  var sitekey = document.getElementById("hx-recaptcha") &&
-                document.getElementById("hx-recaptcha").getAttribute("data-sitekey");
-  var usandoRecaptcha = sitekey && sitekey !== "TU_RECAPTCHA_SITE_KEY";
-  if (usandoRecaptcha) {
-    var recaptchaResp = typeof grecaptcha !== "undefined" ? grecaptcha.getResponse() : "";
-    if (!recaptchaResp) {
-      document.getElementById("recaptcha-error").style.display = "block";
-      return;
-    } else {
-      document.getElementById("recaptcha-error").style.display = "none";
-    }
-  }
-
   var btn = document.getElementById("hx-submit");
   btn.textContent = "Enviando...";
   btn.disabled = true;
 
-  /* OPCIÓN A: Formspree — reemplazá TU_ENDPOINT_FORMSPREE en la línea de configuración */
+  /* OPCIÓN A: Formspree */
   if (FORMSPREE_ENDPOINT.indexOf("TU_ENDPOINT") === -1) {
     var d = hanuxDatos();
     fetch(FORMSPREE_ENDPOINT, {
@@ -843,7 +802,8 @@ function hanuxEnviar(e) {
         cargo:     d.cargo,
         empleados: d.empleados,
         mensaje:   d.desafio,
-        _subject:  "Nuevo diagnostico solicitado — " + d.empresa
+        _subject:  "Nuevo diagnostico solicitado — " + d.empresa,
+        _gotcha:   ""
       })
     })
     .then(function(r) {
@@ -853,7 +813,6 @@ function hanuxEnviar(e) {
     .catch(function() {
       btn.textContent = "Solicitar diagnóstico →";
       btn.disabled = false;
-      if (typeof grecaptcha !== "undefined") grecaptcha.reset();
       hanuxMostrarError();
     });
     return;
