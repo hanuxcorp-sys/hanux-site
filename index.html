@@ -29,7 +29,8 @@ nav{background:var(--white);border-bottom:1px solid var(--border);padding:0 5%;d
 
 /* HERO */
 .hero{background:linear-gradient(135deg,#0f1e3d 0%,#1e3668 45%,#0d2b45 100%);padding:90px 5% 80px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;position:relative;overflow:hidden;}
-.hero::before{content:'';position:absolute;top:0;right:0;bottom:0;left:0;background:radial-gradient(ellipse at 70% 50%,rgba(47,166,122,0.12) 0%,transparent 60%);}
+.hero::before{content:'';position:absolute;top:0;right:0;bottom:0;left:0;background:radial-gradient(ellipse at 70% 50%,rgba(47,166,122,0.12) 0%,transparent 60%);pointer-events:none;}
+.hero-content{position:relative;z-index:1;}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(47,166,122,0.15);border:1px solid rgba(47,166,122,0.3);color:#5dd4a8;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:500;margin-bottom:20px;}
 .hero-badge-dot{width:6px;height:6px;background:#2FA67A;border-radius:50%;display:inline-block;}
 .hero h1{font-size:52px;font-weight:800;color:#fff;line-height:1.1;margin-bottom:20px;}
