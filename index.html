@@ -668,6 +668,18 @@ html{scroll-behavior:smooth;}
           <label>¿Cuál es tu principal desafío operativo?</label>
           <textarea id="hx-desafio" placeholder="Contanos brevemente qué procesos o integraciones son los más problemáticos en tu operación..."></textarea>
         </div>
+        <!-- HONEYPOT: campo trampa invisible para bots -->
+        <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true">
+          <label>No completar este campo</label>
+          <input type="text" id="hx-trap" name="website" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <!-- reCAPTCHA v2 -->
+        <div class="form-group">
+          <div id="hx-recaptcha" class="g-recaptcha" data-sitekey="6LeGqoosAAAAAGL8zoXNyWbDa25PMSz8wBRzUqO0" data-theme="light"></div>
+          <p id="recaptcha-error" style="display:none;color:#e24b4a;font-size:12px;margin-top:6px;">Por favor confirmá que no sos un robot.</p>
+        </div>
+
         <button class="form-submit" id="hx-submit" onclick="hanuxEnviar(event)">Solicitar diagnóstico →</button>
         <p class="form-note">Al enviar aceptás nuestra política de privacidad. No enviamos spam.</p>
       </div>
@@ -715,6 +727,9 @@ html{scroll-behavior:smooth;}
     <span>Automatización · IA · Integración · Orquestación</span>
   </div>
 </footer>
+
+<!-- reCAPTCHA API -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
 /* ----------------------------------------------------------
@@ -783,6 +798,28 @@ function hanuxEnviar(e) {
   e.preventDefault();
   if (!hanuxValidar()) return;
 
+  /* CAPA 1: Honeypot — si el campo trampa tiene contenido es un bot */
+  var trap = document.getElementById("hx-trap");
+  if (trap && trap.value !== "") {
+    /* Bot detectado: simulamos éxito silenciosamente */
+    hanuxMostrarExito();
+    return;
+  }
+
+  /* CAPA 2: reCAPTCHA — verificar que el usuario lo completó */
+  var sitekey = document.getElementById("hx-recaptcha") &&
+                document.getElementById("hx-recaptcha").getAttribute("data-sitekey");
+  var usandoRecaptcha = sitekey && sitekey !== "TU_RECAPTCHA_SITE_KEY";
+  if (usandoRecaptcha) {
+    var recaptchaResp = typeof grecaptcha !== "undefined" ? grecaptcha.getResponse() : "";
+    if (!recaptchaResp) {
+      document.getElementById("recaptcha-error").style.display = "block";
+      return;
+    } else {
+      document.getElementById("recaptcha-error").style.display = "none";
+    }
+  }
+
   var btn = document.getElementById("hx-submit");
   btn.textContent = "Enviando...";
   btn.disabled = true;
@@ -810,6 +847,7 @@ function hanuxEnviar(e) {
     .catch(function() {
       btn.textContent = "Solicitar diagnóstico →";
       btn.disabled = false;
+      if (typeof grecaptcha !== "undefined") grecaptcha.reset();
       hanuxMostrarError();
     });
     return;
