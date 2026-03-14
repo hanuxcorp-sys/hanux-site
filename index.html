@@ -231,7 +231,7 @@ html{scroll-behavior:smooth;}
     <h1>Automatiza.<br>Integra.<br><span>Escala.</span></h1>
     <p class="hero-sub">Transformamos empresas medianas y grandes en organizaciones eficientes con automatización de procesos, integración de sistemas e inteligencia artificial aplicada.</p>
     <div class="hero-ctas">
-      <button class="btn-primary">→ Solicitar diagnóstico gratuito</button>
+      <button class="btn-primary">→ Solicitar diagnóstico</button>
       <button class="btn-secondary">Ver servicios</button>
     </div>
     <div class="hero-stats">
@@ -388,7 +388,7 @@ html{scroll-behavior:smooth;}
     </div>
   </div>
   <div class="services-cta">
-    <button class="btn-primary" style="font-size:15px;padding:16px 36px;">Solicitar diagnóstico gratuito →</button>
+    <button class="btn-primary" style="font-size:15px;padding:16px 36px;">Solicitar diagnóstico →</button>
   </div>
 </section>
 
@@ -581,7 +581,7 @@ html{scroll-behavior:smooth;}
 <section class="cta-banner">
   <h2>¿Listo para transformar<br>tu operación?</h2>
   <p>Empieza con un diagnóstico gratuito. En 2 semanas te mostramos exactamente qué procesos automatizar y cuánto ROI podés esperar.</p>
-  <button class="btn-cta-white">Solicitar diagnóstico gratuito →</button>
+  <button class="btn-cta-white">Solicitar diagnóstico →</button>
   <div class="cta-features">
     <div class="cta-feat"><span class="cta-feat-check">✓</span> Sin costo inicial</div>
     <div class="cta-feat"><span class="cta-feat-check">✓</span> Resultados en 2 semanas</div>
@@ -598,55 +598,70 @@ html{scroll-behavior:smooth;}
       <h2>Solicita tu diagnóstico de automatización</h2>
       <p>Completá el formulario y un especialista de Hanux Corp se comunicará contigo en menos de 24 horas para coordinar una reunión sin costo.</p>
       <ul class="contact-list">
-        <li><div class="contact-list-icon">📧</div> hola@hanuxcorp.com</li>
+        <li><div class="contact-list-icon">📧</div> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2cacdcec3e2cac3ccd7dac1cdd0d28cc1cdcf">[email&#160;protected]</a></li>
         <li><div class="contact-list-icon">📱</div> +54 9 XXX XXX-XXXX</li>
         <li><div class="contact-list-icon">📍</div> Argentina · Remoto en toda LATAM</li>
         <li><div class="contact-list-icon">🕐</div> Respuesta en menos de 24hs</li>
       </ul>
     </div>
     <div class="contact-form-wrap">
-      <h3>Diagnóstico gratuito</h3>
+      <h3>Diagnóstico de automatización</h3>
       <p>Primera reunión sin costo · Sin compromiso · Resultados en 2 semanas</p>
-      <div class="form-row">
-        <div class="form-group">
-          <label>Nombre *</label>
-          <input type="text" placeholder="Tu nombre" />
+
+      <!-- MENSAJE DE ÉXITO (oculto por defecto) -->
+      <div id="form-success" style="display:none;background:#e6f5f0;border:1.5px solid #2FA67A;border-radius:12px;padding:24px;text-align:center;margin-bottom:20px;">
+        <div style="font-size:32px;margin-bottom:10px;">✅</div>
+        <h4 style="font-family:'Poppins',sans-serif;color:#1e7a58;font-size:17px;margin-bottom:6px;">¡Solicitud enviada con éxito!</h4>
+        <p style="color:#1a6b4a;font-size:14px;">Un especialista de Hanux Corp se comunicará con vos en menos de 24 horas.</p>
+      </div>
+
+      <!-- MENSAJE DE ERROR (oculto por defecto) -->
+      <div id="form-error" style="display:none;background:#fef2f2;border:1.5px solid #e24b4a;border-radius:12px;padding:16px;text-align:center;margin-bottom:20px;">
+        <p style="color:#a32d2d;font-size:14px;">Hubo un error al enviar. Por favor escribinos directamente a <strong>hola@hanuxcorp.com</strong></p>
+      </div>
+
+      <div id="hanux-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nombre *</label>
+            <input id="hx-nombre" type="text" placeholder="Tu nombre" />
+          </div>
+          <div class="form-group">
+            <label>Apellido *</label>
+            <input id="hx-apellido" type="text" placeholder="Tu apellido" />
+          </div>
         </div>
         <div class="form-group">
-          <label>Apellido *</label>
-          <input type="text" placeholder="Tu apellido" />
+          <label>Email corporativo *</label>
+          <input id="hx-email" type="email" placeholder="nombre@empresa.com" />
         </div>
-      </div>
-      <div class="form-group">
-        <label>Email corporativo *</label>
-        <input type="email" placeholder="nombre@empresa.com" />
-      </div>
-      <div class="form-row">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Empresa *</label>
+            <input id="hx-empresa" type="text" placeholder="Nombre de la empresa" />
+          </div>
+          <div class="form-group">
+            <label>Cargo *</label>
+            <input id="hx-cargo" type="text" placeholder="Tu rol en la empresa" />
+          </div>
+        </div>
         <div class="form-group">
-          <label>Empresa *</label>
-          <input type="text" placeholder="Nombre de la empresa" />
+          <label>¿Cuántos empleados tiene tu empresa?</label>
+          <select id="hx-empleados">
+            <option value="">Seleccionar</option>
+            <option>50 - 200 empleados</option>
+            <option>200 - 500 empleados</option>
+            <option>500 - 1000 empleados</option>
+            <option>Más de 1000 empleados</option>
+          </select>
         </div>
         <div class="form-group">
-          <label>Cargo *</label>
-          <input type="text" placeholder="Tu rol en la empresa" />
+          <label>¿Cuál es tu principal desafío operativo?</label>
+          <textarea id="hx-desafio" placeholder="Contanos brevemente qué procesos o integraciones son los más problemáticos en tu operación..."></textarea>
         </div>
+        <button class="form-submit" id="hx-submit" onclick="hanuxEnviar(event)">Solicitar diagnóstico →</button>
+        <p class="form-note">Al enviar aceptás nuestra política de privacidad. No enviamos spam.</p>
       </div>
-      <div class="form-group">
-        <label>¿Cuántos empleados tiene tu empresa?</label>
-        <select>
-          <option value="">Seleccionar</option>
-          <option>50 - 200 empleados</option>
-          <option>200 - 500 empleados</option>
-          <option>500 - 1000 empleados</option>
-          <option>Más de 1000 empleados</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label>¿Cuál es tu principal desafío operativo?</label>
-        <textarea placeholder="Contanos brevemente qué procesos o integraciones son los más problemáticos en tu operación..."></textarea>
-      </div>
-      <button class="form-submit">Solicitar diagnóstico gratuito →</button>
-      <p class="form-note">Al enviar aceptás nuestra política de privacidad. No enviamos spam.</p>
     </div>
   </div>
 </section>
@@ -680,17 +695,133 @@ html{scroll-behavior:smooth;}
     <div class="footer-col">
       <h4>Contacto</h4>
       <ul>
-        <li><a href="#">hola@hanuxcorp.com</a></li>
+        <li><a href="#"><span class="__cf_email__" data-cfemail="1e7671727f5e767f706b667d716c6e307d7173">[email&#160;protected]</span></a></li>
         <li><a href="#">LinkedIn</a></li>
         <li><a href="#">Política de privacidad</a></li>
       </ul>
     </div>
-  </div>
+  <  </div>
   <div class="footer-bottom">
     <span>© 2025 Hanux Corp · Todos los derechos reservados</span>
     <span>Automatización · IA · Integración · Orquestación</span>
   </div>
 </footer>
+
+<script>
+/* ============================================================
+   HANUX CORP — LÓGICA DE ENVÍO DE FORMULARIO
+   ============================================================
+   OPCIONES DE ENVÍO (elegí UNA y configurala):
+
+   OPCIÓN A — Formspree (recomendada, gratis hasta 50 envíos/mes):
+     1. Registrate en https://formspree.io
+     2. Creá un nuevo form y copiá tu endpoint
+     3. Reemplazá "TU_ENDPOINT_FORMSPREE" por tu URL real
+        Ejemplo: "https://formspree.io/f/xpzgwkja"
+
+   OPCIÓN C — mailto (sin servidor, abre cliente de email):
+     Cambiá EMAIL_DESTINO por tu email real.
+     No requiere configuración extra.
+   ============================================================ */
+
+  var FORMSPREE_ENDPOINT = "https://formspree.io/f/xojknqwk";
+  var EMAIL_DESTINO      = "hanuxcorp@gmail.com";
+
+  function hanuxValidar() {
+    var nombre  = document.getElementById("hx-nombre").value.trim();
+    var email   = document.getElementById("hx-email").value.trim();
+    var empresa = document.getElementById("hx-empresa").value.trim();
+    if (!nombre)  { alert("Por favor ingresá tu nombre.");            return false; }
+    if (!email)   { alert("Por favor ingresá tu email corporativo."); return false; }
+    if (!/\S+@\S+\.\S+/.test(email)) { alert("El email no es válido."); return false; }
+    if (!empresa) { alert("Por favor ingresá el nombre de tu empresa."); return false; }
+    return true;
+  }
+
+  function hanuxDatos() {
+    return {
+      nombre:    document.getElementById("hx-nombre").value.trim(),
+      apellido:  document.getElementById("hx-apellido").value.trim(),
+      email:     document.getElementById("hx-email").value.trim(),
+      empresa:   document.getElementById("hx-empresa").value.trim(),
+      cargo:     document.getElementById("hx-cargo").value.trim(),
+      empleados: document.getElementById("hx-empleados").value,
+      desafio:   document.getElementById("hx-desafio").value.trim()
+    };
+  }
+
+  function hanuxMostrarExito() {
+    document.getElementById("form-error").style.display   = "none";
+    document.getElementById("form-success").style.display = "block";
+    document.getElementById("hanux-form").style.display   = "none";
+    document.getElementById("form-success").scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  function hanuxMostrarError() {
+    document.getElementById("form-error").style.display = "block";
+    document.getElementById("form-error").scrollIntoView({ behavior: "smooth", block: "center" });
+  }
+
+  function hanuxEnviar(e) {
+    e.preventDefault();
+    if (!hanuxValidar()) return;
+
+    var btn = document.getElementById("hx-submit");
+    btn.textContent = "Enviando...";
+    btn.disabled = true;
+
+    /* OPCIÓN A: Formspree */
+    if (FORMSPREE_ENDPOINT.indexOf("TU_ENDPOINT") === -1) {
+      var d = hanuxDatos();
+      fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({
+          nombre:    d.nombre + " " + d.apellido,
+          email:     d.email,
+          empresa:   d.empresa,
+          cargo:     d.cargo,
+          empleados: d.empleados,
+          mensaje:   d.desafio,
+          _subject:  "Nuevo diagnostico solicitado — " + d.empresa
+        })
+      })
+      .then(function(r) {
+        if (r.ok) { hanuxMostrarExito(); }
+        else      { throw new Error("Error servidor"); }
+      })
+      .catch(function() {
+        btn.textContent = "Solicitar diagnóstico →";
+        btn.disabled = false;
+        hanuxMostrarError();
+      });
+      return;
+    }
+
+    /* OPCIÓN C: mailto (fallback sin configuración) */
+    var d = hanuxDatos();
+    var cuerpo =
+      "Nuevo diagnostico solicitado desde hanuxcorp.com\n\n" +
+      "Nombre:    " + d.nombre + " " + d.apellido + "\n" +
+      "Email:     " + d.email + "\n" +
+      "Empresa:   " + d.empresa + "\n" +
+      "Cargo:     " + d.cargo + "\n" +
+      "Empleados: " + d.empleados + "\n\n" +
+      "Desafio operativo:\n" + d.desafio;
+
+    var mailto =
+      "mailto:" + EMAIL_DESTINO +
+      "?subject=" + encodeURIComponent("Diagnostico solicitado — " + d.empresa) +
+      "&body="    + encodeURIComponent(cuerpo);
+
+    window.location.href = mailto;
+    setTimeout(function() {
+      btn.textContent = "Solicitar diagnóstico →";
+      btn.disabled = false;
+      hanuxMostrarExito();
+    }, 1200);
+  }
+</script>
 
 </body>
 </html>
