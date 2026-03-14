@@ -715,124 +715,128 @@ html{scroll-behavior:smooth;}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ============================================================
-   NAVEGACIÓN — scroll suave + efecto de color al hacer clic
-   ============================================================ */
-  function hanuxIrA(destino, btn) {
-    /* 1. Efecto visual: clase "active" por 700ms */
-    if (btn) {
-      btn.classList.add("active");
-      setTimeout(function() { btn.classList.remove("active"); }, 700);
-    }
-    /* 2. Scroll suave a la sección destino */
-    var el = document.querySelector(destino);
-    if (el) {
-      var offset = 80; /* altura del nav sticky */
-      var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
-      window.scrollTo({ top: top, behavior: "smooth" });
-    }
+<script>
+/* ----------------------------------------------------------
+   HANUX CORP — navegación + formulario
+---------------------------------------------------------- */
+
+/* CONFIGURACIÓN — editá solo estas dos líneas */
+var FORMSPREE_ENDPOINT = "https://formspree.io/f/TU_ENDPOINT_FORMSPREE";
+var EMAIL_DESTINO      = "hola@hanuxcorp.com";
+
+/* Scroll suave + efecto color al hacer clic en CTA */
+function hanuxIrA(destino, btn) {
+  if (btn) {
+    btn.classList.add("active");
+    setTimeout(function() { btn.classList.remove("active"); }, 700);
   }
-   ============================================================
-   OPCIONES DE ENVÍO (elegí UNA y configurala):
-
-   OPCIÓN A — Formspree (recomendada, gratis hasta 50 envíos/mes):
-     1. Registrate en https://formspree.io
-     2. Creá un nuevo form y copiá tu endpoint
-     3. Reemplazá "TU_ENDPOINT_FORMSPREE" por tu URL real
-        Ejemplo: "https://formspree.io/f/xpzgwkja"
-
-   OPCIÓN C — mailto (sin servidor, abre cliente de email):
-     Cambiá EMAIL_DESTINO por tu email real.
-     No requiere configuración extra.
-   ============================================================ */
-
-  var FORMSPREE_ENDPOINT = "https://formspree.io/f/TU_ENDPOINT_FORMSPREE";
-  var EMAIL_DESTINO      = "hola@hanuxcorp.com";
-
-  function hanuxValidar() {
-    var nombre  = document.getElementById("hx-nombre").value.trim();
-    var email   = document.getElementById("hx-email").value.trim();
-    var empresa = document.getElementById("hx-empresa").value.trim();
-    if (!nombre)  { alert("Por favor ingresá tu nombre.");            return false; }
-    if (!email)   { alert("Por favor ingresá tu email corporativo."); return false; }
-    if (!/\S+@\S+\.\S+/.test(email)) { alert("El email no es válido."); return false; }
-    if (!empresa) { alert("Por favor ingresá el nombre de tu empresa."); return false; }
-    return true;
+  var el = document.querySelector(destino);
+  if (el) {
+    var offset = 80;
+    var top = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: top, behavior: "smooth" });
   }
+}
 
-  function hanuxDatos() {
-    return {
-      nombre:    document.getElementById("hx-nombre").value.trim(),
-      apellido:  document.getElementById("hx-apellido").value.trim(),
-      email:     document.getElementById("hx-email").value.trim(),
-      empresa:   document.getElementById("hx-empresa").value.trim(),
-      cargo:     document.getElementById("hx-cargo").value.trim(),
-      empleados: document.getElementById("hx-empleados").value,
-      desafio:   document.getElementById("hx-desafio").value.trim()
-    };
-  }
+/* Validación del formulario */
+function hanuxValidar() {
+  var nombre  = document.getElementById("hx-nombre").value.trim();
+  var email   = document.getElementById("hx-email").value.trim();
+  var empresa = document.getElementById("hx-empresa").value.trim();
+  if (!nombre)  { alert("Por favor ingresá tu nombre.");            return false; }
+  if (!email)   { alert("Por favor ingresá tu email corporativo."); return false; }
+  if (!/\S+@\S+\.\S+/.test(email)) { alert("El email no es válido."); return false; }
+  if (!empresa) { alert("Por favor ingresá el nombre de tu empresa."); return false; }
+  return true;
+}
 
-  function hanuxMostrarExito() {
-    document.getElementById("form-error").style.display   = "none";
-    document.getElementById("form-success").style.display = "block";
-    document.getElementById("hanux-form").style.display   = "none";
-    document.getElementById("form-success").scrollIntoView({ behavior: "smooth", block: "center" });
-  }
+/* Recolectar datos del formulario */
+function hanuxDatos() {
+  return {
+    nombre:    document.getElementById("hx-nombre").value.trim(),
+    apellido:  document.getElementById("hx-apellido").value.trim(),
+    email:     document.getElementById("hx-email").value.trim(),
+    empresa:   document.getElementById("hx-empresa").value.trim(),
+    cargo:     document.getElementById("hx-cargo").value.trim(),
+    empleados: document.getElementById("hx-empleados").value,
+    desafio:   document.getElementById("hx-desafio").value.trim()
+  };
+}
 
-  function hanuxMostrarError() {
-    document.getElementById("form-error").style.display = "block";
-    document.getElementById("form-error").scrollIntoView({ behavior: "smooth", block: "center" });
-  }
+/* Mostrar mensaje de éxito */
+function hanuxMostrarExito() {
+  document.getElementById("form-error").style.display   = "none";
+  document.getElementById("form-success").style.display = "block";
+  document.getElementById("hanux-form").style.display   = "none";
+  document.getElementById("form-success").scrollIntoView({ behavior: "smooth", block: "center" });
+}
 
-  function hanuxEnviar(e) {
-    e.preventDefault();
-    if (!hanuxValidar()) return;
+/* Mostrar mensaje de error */
+function hanuxMostrarError() {
+  document.getElementById("form-error").style.display = "block";
+  document.getElementById("form-error").scrollIntoView({ behavior: "smooth", block: "center" });
+}
 
-    var btn = document.getElementById("hx-submit");
-    btn.textContent = "Enviando...";
-    btn.disabled = true;
+/* Envío del formulario */
+function hanuxEnviar(e) {
+  e.preventDefault();
+  if (!hanuxValidar()) return;
 
-    /* OPCIÓN A: Formspree */
-    if (FORMSPREE_ENDPOINT.indexOf("TU_ENDPOINT") === -1) {
-      var d = hanuxDatos();
-      fetch(FORMSPREE_ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify({
-          nombre:    d.nombre + " " + d.apellido,
-          email:     d.email,
-          empresa:   d.empresa,
-          cargo:     d.cargo,
-          empleados: d.empleados,
-          mensaje:   d.desafio,
-          _subject:  "Nuevo diagnostico solicitado — " + d.empresa
-        })
-      })
-      .then(function(r) {
-        if (r.ok) { hanuxMostrarExito(); }
-        else      { throw new Error("Error servidor"); }
-      })
-      .catch(function() {
-        btn.textContent = "Solicitar diagnóstico →";
-        btn.disabled = false;
-        hanuxMostrarError();
-      });
-      return;
-    }
+  var btn = document.getElementById("hx-submit");
+  btn.textContent = "Enviando...";
+  btn.disabled = true;
 
-    /* OPCIÓN C: mailto (fallback sin configuración) */
+  /* OPCIÓN A: Formspree — reemplazá TU_ENDPOINT_FORMSPREE en la línea de configuración */
+  if (FORMSPREE_ENDPOINT.indexOf("TU_ENDPOINT") === -1) {
     var d = hanuxDatos();
-    var cuerpo =
-      "Nuevo diagnostico solicitado desde hanuxcorp.com\n\n" +
-      "Nombre:    " + d.nombre + " " + d.apellido + "\n" +
-      "Email:     " + d.email + "\n" +
-      "Empresa:   " + d.empresa + "\n" +
-      "Cargo:     " + d.cargo + "\n" +
-      "Empleados: " + d.empleados + "\n\n" +
-      "Desafio operativo:\n" + d.desafio;
+    fetch(FORMSPREE_ENDPOINT, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
+      body: JSON.stringify({
+        nombre:    d.nombre + " " + d.apellido,
+        email:     d.email,
+        empresa:   d.empresa,
+        cargo:     d.cargo,
+        empleados: d.empleados,
+        mensaje:   d.desafio,
+        _subject:  "Nuevo diagnostico solicitado — " + d.empresa
+      })
+    })
+    .then(function(r) {
+      if (r.ok) { hanuxMostrarExito(); }
+      else      { throw new Error("error"); }
+    })
+    .catch(function() {
+      btn.textContent = "Solicitar diagnóstico →";
+      btn.disabled = false;
+      hanuxMostrarError();
+    });
+    return;
+  }
 
-    var mailto =
-      "mailto:" + EMAIL_DESTINO +
-      "?subject=" + encodeURIComponent("Diagnostico solicitado — " + d.empresa) +
-      "&body="    + encodeURIComponen
+  /* OPCIÓN B: mailto — fallback sin configuración extra */
+  var d = hanuxDatos();
+  var cuerpo =
+    "Nuevo diagnostico solicitado\n\n" +
+    "Nombre:    " + d.nombre + " " + d.apellido + "\n" +
+    "Email:     " + d.email + "\n" +
+    "Empresa:   " + d.empresa + "\n" +
+    "Cargo:     " + d.cargo + "\n" +
+    "Empleados: " + d.empleados + "\n\n" +
+    "Desafio operativo:\n" + d.desafio;
+
+  window.location.href =
+    "mailto:" + EMAIL_DESTINO +
+    "?subject=" + encodeURIComponent("Diagnostico solicitado — " + d.empresa) +
+    "&body="    + encodeURIComponent(cuerpo);
+
+  setTimeout(function() {
+    btn.textContent = "Solicitar diagnóstico →";
+    btn.disabled = false;
+    hanuxMostrarExito();
+  }, 1200);
+}
+</script>
+
+</body>
+</html>
