@@ -189,7 +189,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 .phase-card-2 .phase-deco{background:#2FA67A;opacity:.06;}
 
 /* ── BENEFITS ── */
-.benefits{background:var(--white);padding:100px 0;}
+.benefits{background:var(--bg);padding:100px 0;}
 .benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:52px;}
 .benefit-card{border-radius:14px;padding:32px;border:1px solid var(--border);position:relative;overflow:hidden;transition:all .25s;}
 .benefit-card:hover{border-color:var(--green-mid);transform:translateY(-3px);box-shadow:0 8px 32px rgba(47,166,122,.08);}
@@ -216,7 +216,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 .cta-feat-icon{width:18px;height:18px;border-radius:50%;background:rgba(47,166,122,.2);display:flex;align-items:center;justify-content:center;font-size:9px;color:#2FA67A;}
 
 /* ── CONTACT ── */
-.contact{background:var(--bg);padding:100px 0;}
+.contact{background:var(--white);padding:100px 0;}
 .contact-wrap{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start;}
 .contact-left h2{font-size:32px;font-weight:700;color:var(--dark);margin-bottom:14px;}
 .contact-left p{font-size:15px;color:var(--gray);line-height:1.75;margin-bottom:32px;}
@@ -230,7 +230,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 .cpn-dot-blue{background:var(--blue-mid);}
 .cpn-dot-green{background:var(--green-mid);}
 /* FORM */
-.contact-form-box{background:var(--white);border:1px solid var(--border);border-radius:20px;padding:40px;}
+.contact-form-box{background:var(--bg);border:1px solid var(--border);border-radius:20px;padding:40px;}
 .contact-form-box h3{font-size:20px;font-weight:700;color:var(--dark);margin-bottom:4px;}
 .contact-form-box > p{font-size:13px;color:var(--gray);margin-bottom:28px;}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
@@ -298,7 +298,6 @@ footer{background:var(--dark);padding:56px 0 28px;}
     </a>
     <ul class="nav-links">
       <li><a href="#metodologia">Metodología</a></li>
-      <li><a href="#fases">Fases</a></li>
       <li><a href="#beneficios">Beneficios</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -510,53 +509,6 @@ footer{background:var(--dark);padding:56px 0 28px;}
           <span>El informe puede utilizarse como documentación base para certificaciones ISO</span>
         </div>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ PHASES ══ -->
-<section class="phases" id="fases">
-  <div class="container">
-    <h2 class="section-title center">Dos fases diseñadas<br>para minimizar el riesgo</h2>
-    <p class="section-sub center" style="margin:0 auto;">Comenzamos siempre por entender antes de implementar. Así garantizamos que cada decisión tecnológica esté respaldada por un análisis real de su operación.</p>
-    <div class="phases-grid">
-
-      <div class="phase-card phase-card-1">
-        <div class="phase-num">FASE 01 — EXPLORACIÓN Y DIAGNÓSTICO</div>
-        <h3>Análisis profundo de su operación</h3>
-        <p>Aplicamos el Hanux Process Intelligence Framework para mapear, analizar y documentar cómo funciona realmente su empresa, entregando un informe estratégico completo.</p>
-        <ul class="phase-list">
-          <li><span class="phase-check phase-check-blue">✓</span> Relevamiento de procesos con responsables de área</li>
-          <li><span class="phase-check phase-check-blue">✓</span> Mapeo BPMN de procesos críticos</li>
-          <li><span class="phase-check phase-check-blue">✓</span> Identificación de ineficiencias y tareas manuales</li>
-          <li><span class="phase-check phase-check-blue">✓</span> Oportunidades de automatización priorizadas</li>
-          <li><span class="phase-check phase-check-blue">✓</span> Roadmap de transformación priorizado</li>
-          <li><span class="phase-check phase-check-blue">✓</span> Documentación compatible con normas ISO</li>
-        </ul>
-        <button class="btn btn-dark btn-arrow" onclick="hanuxIrA('#contacto',this)">Solicitar Fase 1 </button>
-        <div class="phase-deco"></div>
-      </div>
-
-      <div class="phase-card phase-card-2">
-        <div class="phase-num">FASE 02 — IMPLEMENTACIÓN</div>
-        <h3>Automatización e integración de sistemas</h3>
-        <p>Si el cliente decide avanzar, implementamos las soluciones identificadas en el diagnóstico: automatizaciones, integraciones, workflows e IA aplicada a su operación.</p>
-        <div class="phase-discount">
-          <span class="phase-discount-icon">💡</span>
-          <p>El valor del diagnóstico de Fase 1 se <strong>descuenta íntegramente</strong> del costo del proyecto de implementación</p>
-        </div>
-        <ul class="phase-list">
-          <li><span class="phase-check phase-check-green">✓</span> Automatización de procesos identificados</li>
-          <li><span class="phase-check phase-check-green">✓</span> Integración de sistemas (ERP, CRM, APIs)</li>
-          <li><span class="phase-check phase-check-green">✓</span> Desarrollo de workflows automatizados</li>
-          <li><span class="phase-check phase-check-green">✓</span> Implementación de agentes de IA</li>
-          <li><span class="phase-check phase-check-green">✓</span> Capacitación del equipo operativo</li>
-          <li><span class="phase-check phase-check-green">✓</span> Soporte y evolución continua</li>
-        </ul>
-        <button class="btn btn-primary btn-arrow" onclick="hanuxIrA('#contacto',this)">Consultar Fase 2 </button>
-        <div class="phase-deco"></div>
-      </div>
-
     </div>
   </div>
 </section>
