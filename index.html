@@ -441,7 +441,7 @@ footer{background:var(--dark);padding:56px 0 28px;}
       </div>
       <div class="method-header-right">
         <p>No implementamos tecnología por moda ni por tendencia. Nuestro punto de partida siempre es el mismo: <strong style="color:var(--dark)">entender primero, automatizar después.</strong></p>
-        <p>El framework analiza su operación a través de 5 pilares que cubren desde la comprensión de los procesos actuales hasta la definición de un plan de transformación con ROI estimado.</p>
+        <p>El framework analiza su operación a través de 5 pilares que cubren desde la comprensión de los procesos actuales hasta la definición de un plan de transformación.</p>
         <button class="btn btn-outline" onclick="hanuxIrA('#contacto',this)">Solicitar diagnóstico estratégico</button>
       </div>
     </div>
@@ -470,7 +470,7 @@ footer{background:var(--dark);padding:56px 0 28px;}
       <div class="pillar-card">
         <div class="pillar-num" style="background:var(--dark);color:#fff;">05</div>
         <h3>Transformation Roadmap</h3>
-        <p>Definimos un plan de optimización operativa priorizado por impacto y viabilidad, con estimación de ROI y plazos de implementación.</p>
+        <p>Definimos un plan de optimización operativa priorizado por impacto, viabilidad y plazos de implementación.</p>
       </div>
     </div>
 
@@ -501,7 +501,7 @@ footer{background:var(--dark);padding:56px 0 28px;}
         <div class="md-item">
           <div class="md-item-icon">🚀</div>
           <h4>Roadmap de transformación</h4>
-          <p>Plan de implementación con fases, plazos, costos estimados y ROI</p>
+          <p>Plan de implementación con fases y plazos</p>
         </div>
       </div>
       <div class="md-pricing">
@@ -517,7 +517,6 @@ footer{background:var(--dark);padding:56px 0 28px;}
 <!-- ══ PHASES ══ -->
 <section class="phases" id="fases">
   <div class="container">
-    <div class="center section-eyebrow"><span class="badge badge-green"><span class="badge-dot"></span>Proceso de trabajo</span></div>
     <h2 class="section-title center">Dos fases diseñadas<br>para minimizar el riesgo</h2>
     <p class="section-sub center" style="margin:0 auto;">Comenzamos siempre por entender antes de implementar. Así garantizamos que cada decisión tecnológica esté respaldada por un análisis real de su operación.</p>
     <div class="phases-grid">
@@ -531,7 +530,7 @@ footer{background:var(--dark);padding:56px 0 28px;}
           <li><span class="phase-check phase-check-blue">✓</span> Mapeo BPMN de procesos críticos</li>
           <li><span class="phase-check phase-check-blue">✓</span> Identificación de ineficiencias y tareas manuales</li>
           <li><span class="phase-check phase-check-blue">✓</span> Oportunidades de automatización priorizadas</li>
-          <li><span class="phase-check phase-check-blue">✓</span> Roadmap con estimación de ROI</li>
+          <li><span class="phase-check phase-check-blue">✓</span> Roadmap de transformación priorizado</li>
           <li><span class="phase-check phase-check-blue">✓</span> Documentación compatible con normas ISO</li>
         </ul>
         <button class="btn btn-dark btn-arrow" onclick="hanuxIrA('#contacto',this)">Solicitar Fase 1 </button>
@@ -617,7 +616,6 @@ footer{background:var(--dark);padding:56px 0 28px;}
     <p>Comenzamos por entender su empresa. En 2 semanas le entregamos un mapa completo de su operación con las oportunidades de automatización priorizadas por impacto.</p>
     <div class="cta-band-btns">
       <button class="btn btn-primary btn-lg btn-arrow" onclick="hanuxIrA('#contacto',this)">Solicitar diagnóstico estratégico </button>
-      <button class="btn btn-outline-white btn-lg" onclick="hanuxIrA('#fases',this)">Ver cómo funciona</button>
     </div>
     <div class="cta-features">
       <div class="cta-feat"><span class="cta-feat-icon">✓</span> Sin compromiso de implementación</div>
@@ -654,47 +652,37 @@ footer{background:var(--dark);padding:56px 0 28px;}
       <div class="contact-form-box">
         <h3>Solicitar diagnóstico estratégico</h3>
         <p>Primera reunión sin costo · Sin compromiso · Informe en 2 semanas</p>
-
-        <!-- Mensaje de gracias (oculto hasta que se envía) -->
-        <div id="hanux-gracias" style="display:none;text-align:center;padding:40px 20px;">
-          <div style="width:64px;height:64px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:28px;">✅</div>
-          <h3 style="font-family:'Poppins',sans-serif;font-size:22px;font-weight:700;color:var(--dark);margin-bottom:12px;">¡Gracias por contactarnos!</h3>
-          <p style="font-size:15px;color:var(--gray);line-height:1.75;max-width:360px;margin:0 auto 8px;">Un especialista de Hanux Corp se comunicará con usted en menos de <strong style="color:var(--dark);">24 horas</strong> para coordinar una reunión sin costo.</p>
-          <p style="font-size:13px;color:var(--muted);margin-top:16px;">Mientras tanto, si tiene alguna consulta urgente escríbanos a <strong>hola@hanuxcorp.com</strong></p>
-        </div>
-
-        <!-- Formulario -->
-        <div id="hanux-form">
-          <!-- Honeypot anti-bots -->
-          <input type="text" id="hx-gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
-
+        <!-- Formulario nativo → Formspree -->
+        <form action="https://formspree.io/f/xojknqwk" method="POST">
+          <input type="hidden" name="_subject" value="Diagnostico solicitado — Hanux Corp" />
+          <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
           <div class="form-row">
             <div class="form-group">
               <label>Nombre *</label>
-              <input type="text" name="nombre" id="hx-nombre" placeholder="Su nombre" />
+              <input type="text" name="nombre" placeholder="Su nombre" required />
             </div>
             <div class="form-group">
-              <label>Apellido *</label>
-              <input type="text" name="apellido" id="hx-apellido" placeholder="Su apellido" />
+              <label>Apellido</label>
+              <input type="text" name="apellido" placeholder="Su apellido" />
             </div>
           </div>
           <div class="form-group">
             <label>Email corporativo *</label>
-            <input type="email" name="email" id="hx-email" placeholder="nombre@empresa.com" />
+            <input type="email" name="email" placeholder="nombre@empresa.com" required />
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>Empresa *</label>
-              <input type="text" name="empresa" id="hx-empresa" placeholder="Nombre de la empresa" />
+              <input type="text" name="empresa" placeholder="Nombre de la empresa" required />
             </div>
             <div class="form-group">
               <label>Cargo</label>
-              <input type="text" name="cargo" id="hx-cargo" placeholder="Su rol en la empresa" />
+              <input type="text" name="cargo" placeholder="Su rol en la empresa" />
             </div>
           </div>
           <div class="form-group">
             <label>¿Cuántos empleados tiene su empresa?</label>
-            <select name="empleados" id="hx-empleados">
+            <select name="empleados">
               <option value="">Seleccionar</option>
               <option>Menos de 50 empleados</option>
               <option>50 – 200 empleados</option>
@@ -705,18 +693,13 @@ footer{background:var(--dark);padding:56px 0 28px;}
           </div>
           <div class="form-group">
             <label>¿Cuál es su principal desafío operativo?</label>
-            <textarea name="mensaje" id="hx-desafio" placeholder="Describa brevemente los procesos o ineficiencias que le generan más problemas en su operación..."></textarea>
+            <textarea name="mensaje" placeholder="Describa brevemente los procesos o ineficiencias que le generan más problemas en su operación..."></textarea>
           </div>
-
-          <div id="hx-error" style="display:none;background:#fef2f2;border:1px solid #f09595;border-radius:8px;padding:12px 16px;margin-bottom:16px;font-size:13px;color:#a32d2d;">
-            Hubo un error al enviar. Por favor intente nuevamente o escríbanos a <strong>hola@hanuxcorp.com</strong>
-          </div>
-
-          <button type="button" class="form-submit" id="hx-submit" onclick="hanuxEnviar()">
+          <button type="submit" class="form-submit">
             Solicitar diagnóstico estratégico →
           </button>
           <p class="form-note">Al enviar acepta nuestra política de privacidad. No enviamos spam.</p>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -753,7 +736,7 @@ footer{background:var(--dark);padding:56px 0 28px;}
       <div class="footer-col">
         <h4>Contacto</h4>
         <ul>
-          <li><a href="#"><span class="__cf_email__" data-cfemail="1971767578597178776c617a766b69377a7674">[email&#160;protected]</span></a></li>
+          <li><a href="#"><span class="__cf_email__" data-cfemail="95fdfaf9f4d5fdf4fbe0edf6fae7e5bbf6faf8">[email&#160;protected]</span></a></li>
           <li><a href="#">LinkedIn</a></li>
           <li><a href="#">Política de privacidad</a></li>
         </ul>
@@ -766,76 +749,10 @@ footer{background:var(--dark);padding:56px 0 28px;}
   </div>
 </footer>
 
-<script>
-/* Scroll suave + efecto color en CTAs */
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function hanuxIrA(destino, btn) {
   if (btn) {
     btn.classList.add("active");
     setTimeout(function() { btn.classList.remove("active"); }, 700);
   }
-  var el = document.querySelector(destino);
-  if (el) {
-    var top = el.getBoundingClientRect().top + window.pageYOffset - 80;
-    window.scrollTo({ top: top, behavior: "smooth" });
-  }
-}
-
-/* Envío del formulario con fetch → mensaje de gracias inline */
-function hanuxEnviar() {
-  /* Honeypot: si tiene contenido es un bot, ignorar */
-  if (document.getElementById("hx-gotcha").value) { return; }
-
-  /* Validación básica */
-  var nombre  = document.getElementById("hx-nombre").value.trim();
-  var email   = document.getElementById("hx-email").value.trim();
-  var empresa = document.getElementById("hx-empresa").value.trim();
-  if (!nombre)  { alert("Por favor ingrese su nombre.");              return; }
-  if (!email)   { alert("Por favor ingrese su email corporativo.");   return; }
-  if (!/\S+@\S+\.\S+/.test(email)) { alert("El email no es válido."); return; }
-  if (!empresa) { alert("Por favor ingrese el nombre de su empresa."); return; }
-
-  /* Estado del botón: cargando */
-  var btn = document.getElementById("hx-submit");
-  btn.textContent = "Enviando...";
-  btn.disabled = true;
-  document.getElementById("hx-error").style.display = "none";
-
-  /* Armar datos */
-  var datos = {
-    nombre:    nombre + " " + document.getElementById("hx-apellido").value.trim(),
-    email:     email,
-    empresa:   empresa,
-    cargo:     document.getElementById("hx-cargo").value.trim(),
-    empleados: document.getElementById("hx-empleados").value,
-    mensaje:   document.getElementById("hx-desafio").value.trim(),
-    _subject:  "Diagnostico solicitado — " + empresa,
-    _gotcha:   ""
-  };
-
-  /* Enviar a Formspree */
-  fetch("https://formspree.io/f/xojknqwk", {
-    method:  "POST",
-    headers: { "Content-Type": "application/json", "Accept": "application/json" },
-    body:    JSON.stringify(datos)
-  })
-  .then(function(res) {
-    if (res.ok) {
-      /* Éxito: ocultar form, mostrar gracias */
-      document.getElementById("hanux-form").style.display   = "none";
-      document.getElementById("hanux-gracias").style.display = "block";
-      document.getElementById("hanux-gracias").scrollIntoView({ behavior: "smooth", block: "center" });
-    } else {
-      throw new Error("Error " + res.status);
-    }
-  })
-  .catch(function() {
-    /* Error: mostrar mensaje y rehabilitar botón */
-    document.getElementById("hx-error").style.display = "block";
-    btn.textContent = "Solicitar diagn\u00f3stico estrat\u00e9gico \u2192";
-    btn.disabled = false;
-  });
-}
-</script>
-
-</body>
-</html>
+  var el = docum
