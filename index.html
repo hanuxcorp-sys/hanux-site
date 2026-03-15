@@ -52,7 +52,8 @@ img{max-width:100%;}
 /* ── NAV ── */
 nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);height:70px;display:flex;align-items:center;}
 .nav-inner{width:100%;max-width:1140px;margin:0 auto;padding:0 5%;display:flex;align-items:center;justify-content:space-between;}
-.logo{font-size:21px;font-weight:800;color:var(--blue);text-decoration:none;}
+.logo{text-decoration:none;display:inline-flex;align-items:center;}
+.logo img{height:44px;width:auto;display:block;}
 .logo span{color:var(--green-mid);}
 .nav-links{display:flex;gap:30px;list-style:none;}
 .nav-links a{text-decoration:none;color:var(--slate);font-size:13.5px;font-weight:500;transition:color .15s;}
@@ -95,10 +96,10 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 
 /* ── TRUST BAR ── */
 .trust-bar{background:var(--white);border-bottom:1px solid var(--border-light);padding:20px 0;}
-.trust-inner{max-width:1140px;margin:0 auto;padding:0 5%;display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
+.trust-inner{max-width:1140px;margin:0 auto;padding:0 5%;display:flex;flex-direction:column;align-items:center;gap:14px;}
 .trust-label{font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;white-space:nowrap;}
-.trust-divider{width:1px;height:20px;background:var(--border);}
-.trust-items{display:flex;gap:28px;align-items:center;flex-wrap:wrap;}
+.trust-divider{width:40px;height:2px;background:var(--border);border-radius:2px;}
+.trust-items{display:flex;gap:24px;align-items:center;justify-content:center;flex-wrap:wrap;}
 .trust-item{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--slate);font-weight:500;}
 .trust-check{width:18px;height:18px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--green);}
 
@@ -253,8 +254,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 footer{background:var(--dark);padding:56px 0 28px;}
 .footer-inner{max-width:1140px;margin:0 auto;padding:0 5%;}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-.footer-logo{font-family:'Poppins',sans-serif;font-size:20px;font-weight:800;color:#fff;}
-.footer-logo span{color:#2FA67A;}
+.footer-logo{display:inline-block;}
+.footer-logo img{height:52px;width:auto;display:block;}
 .footer-brand p{font-size:13px;color:#6b8099;line-height:1.7;margin-top:12px;max-width:240px;}
 .footer-col h4{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:#fff;letter-spacing:.07em;text-transform:uppercase;margin-bottom:16px;}
 .footer-col ul{list-style:none;}
@@ -292,7 +293,9 @@ footer{background:var(--dark);padding:56px 0 28px;}
 <!-- ══ NAV ══ -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="logo">Hanux<span>Corp</span></a>
+    <a href="#" class="logo">
+      <img src="images/Logo_Hanux_Corp_cabecera.jpg" alt="Hanux Corp — Automate · Innovate · Optimize" />
+    </a>
     <ul class="nav-links">
       <li><a href="#metodologia">Metodología</a></li>
       <li><a href="#fases">Fases</a></li>
@@ -502,12 +505,6 @@ footer{background:var(--dark);padding:56px 0 28px;}
         </div>
       </div>
       <div class="md-pricing">
-        <div class="md-price-box">
-          <div>
-            <div class="md-price-label">Inversión del diagnóstico</div>
-            <div><span class="md-price-val">USD 1.000 — 5.000</span> <span class="md-price-sub">según tamaño de empresa</span></div>
-          </div>
-        </div>
         <div class="md-iso-badge">
           <span>⭐</span>
           <span>El informe puede utilizarse como documentación base para certificaciones ISO</span>
@@ -522,17 +519,13 @@ footer{background:var(--dark);padding:56px 0 28px;}
   <div class="container">
     <div class="center section-eyebrow"><span class="badge badge-green"><span class="badge-dot"></span>Proceso de trabajo</span></div>
     <h2 class="section-title center">Dos fases diseñadas<br>para minimizar el riesgo</h2>
-    <p class="section-sub center">Comenzamos siempre por entender antes de implementar. Así garantizamos que cada decisión tecnológica esté respaldada por un análisis real de su operación.</p>
+    <p class="section-sub center" style="margin:0 auto;">Comenzamos siempre por entender antes de implementar. Así garantizamos que cada decisión tecnológica esté respaldada por un análisis real de su operación.</p>
     <div class="phases-grid">
 
       <div class="phase-card phase-card-1">
         <div class="phase-num">FASE 01 — EXPLORACIÓN Y DIAGNÓSTICO</div>
         <h3>Análisis profundo de su operación</h3>
         <p>Aplicamos el Hanux Process Intelligence Framework para mapear, analizar y documentar cómo funciona realmente su empresa, entregando un informe estratégico completo.</p>
-        <div class="phase-price">
-          <span class="phase-price-val">USD 1.000 – 5.000</span>
-          <span class="phase-price-label">&nbsp;según tamaño</span>
-        </div>
         <ul class="phase-list">
           <li><span class="phase-check phase-check-blue">✓</span> Relevamiento de procesos con responsables de área</li>
           <li><span class="phase-check phase-check-blue">✓</span> Mapeo BPMN de procesos críticos</li>
@@ -645,14 +638,14 @@ footer{background:var(--dark);padding:56px 0 28px;}
         <div class="divider"></div>
         <p>Complete el formulario y un especialista de Hanux Corp se comunicará con usted en menos de 24 horas para coordinar una primera reunión sin costo.</p>
         <ul class="contact-info-list">
-          <li><div class="ci-icon">📧</div> hola@hanuxcorp.com</li>
+          <li><div class="ci-icon">📧</div> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c0a8afaca180a8a1aeb5b8a3afb2b0eea3afad">[email&#160;protected]</a></li>
           <li><div class="ci-icon">📱</div> +54 9 XXX XXX-XXXX</li>
           <li><div class="ci-icon">📍</div> Argentina · Remoto en toda LATAM</li>
           <li><div class="ci-icon">🕐</div> Respuesta en menos de 24 horas</li>
         </ul>
         <div class="contact-phases-note">
           <div class="cpn-title">Podemos ayudarle en</div>
-          <div class="cpn-row"><span class="cpn-dot cpn-dot-blue"></span> Fase 1 — Diagnóstico estratégico (USD 1.000–5.000)</div>
+          <div class="cpn-row"><span class="cpn-dot cpn-dot-blue"></span> Fase 1 — Diagnóstico estratégico</div>
           <div class="cpn-row"><span class="cpn-dot cpn-dot-green"></span> Fase 2 — Implementación de automatización</div>
           <div class="cpn-row" style="margin-top:8px;font-size:12px;color:var(--muted);">El diagnóstico se descuenta si avanza a implementación</div>
         </div>
@@ -667,7 +660,7 @@ footer{background:var(--dark);padding:56px 0 28px;}
           <h4>¡Solicitud enviada con éxito!</h4>
           <p>Un especialista de Hanux Corp se comunicará con usted en menos de 24 horas.</p>
         </div>
-        <div id="form-error"><p>Hubo un error al enviar. Por favor escríbanos a <strong>hola@hanuxcorp.com</strong></p></div>
+        <div id="form-error"><p>Hubo un error al enviar. Por favor escríbanos a <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c1a9aeada081a9a0afb4b9a2aeb3b1efa2aeac">[email&#160;protected]</a></strong></p></div>
 
         <div id="hanux-form">
           <div class="form-row">
@@ -739,7 +732,9 @@ footer{background:var(--dark);padding:56px 0 28px;}
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <div class="footer-logo">Hanux<span>Corp</span></div>
+        <div class="footer-logo">
+          <img src="images/Logo_Hanux_Corp_Footer.jpg" alt="Hanux Corp" />
+        </div>
         <p>Inteligencia operativa para empresas que quieren escalar con eficiencia. Analizamos, optimizamos y automatizamos su operación.</p>
       </div>
       <div class="footer-col">
@@ -763,7 +758,7 @@ footer{background:var(--dark);padding:56px 0 28px;}
       <div class="footer-col">
         <h4>Contacto</h4>
         <ul>
-          <li><a href="#">hola@hanuxcorp.com</a></li>
+          <li><a href="#"><span class="__cf_email__" data-cfemail="1971767578597178776c617a766b69377a7674">[email&#160;protected]</span></a></li>
           <li><a href="#">LinkedIn</a></li>
           <li><a href="#">Política de privacidad</a></li>
         </ul>
@@ -776,7 +771,7 @@ footer{background:var(--dark);padding:56px 0 28px;}
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* CONFIGURACIÓN */
 var FORMSPREE_ENDPOINT = "https://formspree.io/f/xojknqwk";
 var EMAIL_DESTINO      = "hola@hanuxcorp.com";
@@ -878,21 +873,4 @@ function hanuxEnviar(e) {
     "Empresa:   " + d.empresa + "\n" +
     "Cargo:     " + d.cargo + "\n" +
     "Empleados: " + d.empleados + "\n" +
-    "Fase:      " + d.fase + "\n\n" +
-    "Desafio operativo:\n" + d.desafio;
-
-  window.location.href =
-    "mailto:" + EMAIL_DESTINO +
-    "?subject=" + encodeURIComponent("Diagnostico solicitado — " + d.empresa) +
-    "&body="    + encodeURIComponent(cuerpo);
-
-  setTimeout(function() {
-    btn.textContent = "Solicitar diagnóstico estratégico →";
-    btn.disabled = false;
-    hanuxMostrarExito();
-  }, 1200);
-}
-</script>
-
-</body>
-</html>
+    "F
