@@ -713,7 +713,7 @@ footer{background:var(--dark);padding:56px 0 28px;}
             <textarea id="hx-desafio" placeholder="Describa brevemente los procesos o ineficiencias que le generan más problemas en su operación..."></textarea>
           </div>
           <!-- HONEYPOT -->
-          <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;height:0;overflow:hidden;" aria-hidden="true">
+          <div style="display:none;" aria-hidden="true">
             <label for="hx-confirm">No completar</label>
             <input type="text" id="hx-confirm" name="confirm" tabindex="-1" autocomplete="off" />
           </div>
@@ -771,12 +771,12 @@ footer{background:var(--dark);padding:56px 0 28px;}
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* CONFIGURACIÓN */
+<script>
+/* ── CONFIGURACIÓN ── */
 var FORMSPREE_ENDPOINT = "https://formspree.io/f/xojknqwk";
 var EMAIL_DESTINO      = "hanuxcorp@gmail.com";
 
-/* Scroll suave + efecto de color al hacer clic */
+/* Scroll suave + efecto color al hacer clic en CTAs */
 function hanuxIrA(destino, btn) {
   if (btn) {
     btn.classList.add("active");
@@ -789,19 +789,24 @@ function hanuxIrA(destino, btn) {
   }
 }
 
-/* Validación */
+/* Validación de campos obligatorios + honeypot */
 function hanuxValidar() {
-  if (document.getElementById("hx-confirm").value) { return false; }
+  /* Honeypot: si tiene contenido es un bot */
+  var trap = document.getElementById("hx-confirm");
+  if (trap && trap.value) { return false; }
+
   var nombre  = document.getElementById("hx-nombre").value.trim();
   var email   = document.getElementById("hx-email").value.trim();
   var empresa = document.getElementById("hx-empresa").value.trim();
-  if (!nombre)  { alert("Por favor ingrese su nombre.");            return false; }
-  if (!email)   { alert("Por favor ingrese su email corporativo."); return false; }
+
+  if (!nombre)  { alert("Por favor ingrese su nombre.");              return false; }
+  if (!email)   { alert("Por favor ingrese su email corporativo.");   return false; }
   if (!/\S+@\S+\.\S+/.test(email)) { alert("El email no es válido."); return false; }
   if (!empresa) { alert("Por favor ingrese el nombre de su empresa."); return false; }
   return true;
 }
 
+/* Recolectar todos los campos del formulario */
 function hanuxDatos() {
   return {
     nombre:    document.getElementById("hx-nombre").value.trim(),
@@ -815,62 +820,73 @@ function hanuxDatos() {
   };
 }
 
+/* Mostrar mensaje de éxito */
 function hanuxMostrarExito() {
-  document.getElementById("form-error").style.display   = "none";
-  document.getElementById("form-success").style.display = "block";
-  document.getElementById("hanux-form").style.display   = "none";
-  document.getElementById("form-success").scrollIntoView({ behavior: "smooth", block: "center" });
+  var fs = document.getElementById("form-success");
+  var fe = document.getElementById("form-error");
+  var hf = document.getElementById("hanux-form");
+  if (fe) fe.style.display = "none";
+  if (fs) fs.style.display = "block";
+  if (hf) hf.style.display = "none";
+  if (fs) fs.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
+/* Mostrar mensaje de error */
 function hanuxMostrarError() {
-  document.getElementById("form-error").style.display = "block";
-  document.getElementById("form-error").scrollIntoView({ behavior: "smooth", block: "center" });
+  var fe = document.getElementById("form-error");
+  if (fe) {
+    fe.style.display = "block";
+    fe.scrollIntoView({ behavior: "smooth", block: "center" });
+  }
 }
 
+/* Envío del formulario */
 function hanuxEnviar(e) {
   e.preventDefault();
   if (!hanuxValidar()) return;
+
   var btn = document.getElementById("hx-submit");
   btn.textContent = "Enviando...";
   btn.disabled = true;
 
-  /* Formspree */
-  if (FORMSPREE_ENDPOINT.indexOf("TU_ENDPOINT") === -1) {
-    var d = hanuxDatos();
-    fetch(FORMSPREE_ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify({
-        nombre:    d.nombre + " " + d.apellido,
-        email:     d.email,
-        empresa:   d.empresa,
-        cargo:     d.cargo,
-        empleados: d.empleados,
-        fase:      d.fase,
-        mensaje:   d.desafio,
-        _subject:  "Diagnostico solicitado — " + d.empresa,
-        _gotcha:   ""
-      })
-    })
-    .then(function(r) {
-      if (r.ok) { hanuxMostrarExito(); }
-      else      { throw new Error("error"); }
-    })
-    .catch(function() {
-      btn.textContent = "Solicitar diagnóstico estratégico →";
-      btn.disabled = false;
-      hanuxMostrarError();
-    });
-    return;
-  }
-
-  /* Fallback mailto */
   var d = hanuxDatos();
-  var cuerpo =
-    "Nuevo diagnostico solicitado — hanuxcorp.com\n\n" +
-    "Nombre:    " + d.nombre + " " + d.apellido + "\n" +
-    "Email:     " + d.email + "\n" +
-    "Empresa:   " + d.empresa + "\n" +
-    "Cargo:     " + d.cargo + "\n" +
-    "Empleados: " + d.empleados + "\n" +
-    "F
+
+  fetch(FORMSPREE_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify({
+      nombre:    d.nombre + " " + d.apellido,
+      email:     d.email,
+      empresa:   d.empresa,
+      cargo:     d.cargo,
+      empleados: d.empleados,
+      fase:      d.fase,
+      mensaje:   d.desafio,
+      _subject:  "Diagnostico solicitado — " + d.empresa,
+      _gotcha:   ""
+    })
+  })
+  .then(function(response) {
+    if (response.ok) {
+      hanuxMostrarExito();
+    } else {
+      return response.json().then(function(data) {
+        console.error("Formspree error:", data);
+        throw new Error("Error " + response.status);
+      });
+    }
+  })
+  .catch(function(err) {
+    console.error("Error al enviar formulario:", err);
+    btn.textContent = "Solicitar diagnóstico estratégico →";
+    btn.disabled = false;
+    hanuxMostrarError();
+  });
+}
+</script>
+
+</body>
+</html>
