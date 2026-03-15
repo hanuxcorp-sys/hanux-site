@@ -655,41 +655,42 @@ footer{background:var(--dark);padding:56px 0 28px;}
         <h3>Solicitar diagnóstico estratégico</h3>
         <p>Primera reunión sin costo · Sin compromiso · Informe en 2 semanas</p>
 
-        <div id="form-success">
-          <div style="font-size:36px;margin-bottom:10px;">✅</div>
-          <h4>¡Solicitud enviada con éxito!</h4>
-          <p>Un especialista de Hanux Corp se comunicará con usted en menos de 24 horas.</p>
-        </div>
-        <div id="form-error"><p>Hubo un error al enviar. Por favor escríbanos a <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c1a9aeada081a9a0afb4b9a2aeb3b1efa2aeac">[email&#160;protected]</a></strong></p></div>
+        <form id="hanux-form"
+              action="https://formspree.io/f/xojknqwk"
+              method="POST">
 
-        <div id="hanux-form">
+          <!-- Campo oculto: asunto del email -->
+          <input type="hidden" name="_subject" value="Diagnóstico solicitado — Hanux Corp" />
+          <!-- Honeypot anti-bots -->
+          <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
+
           <div class="form-row">
             <div class="form-group">
               <label>Nombre *</label>
-              <input id="hx-nombre" type="text" placeholder="Su nombre" />
+              <input type="text" name="nombre" id="hx-nombre" placeholder="Su nombre" required />
             </div>
             <div class="form-group">
               <label>Apellido *</label>
-              <input id="hx-apellido" type="text" placeholder="Su apellido" />
+              <input type="text" name="apellido" id="hx-apellido" placeholder="Su apellido" />
             </div>
           </div>
           <div class="form-group">
             <label>Email corporativo *</label>
-            <input id="hx-email" type="email" placeholder="nombre@empresa.com" />
+            <input type="email" name="email" id="hx-email" placeholder="nombre@empresa.com" required />
           </div>
           <div class="form-row">
             <div class="form-group">
               <label>Empresa *</label>
-              <input id="hx-empresa" type="text" placeholder="Nombre de la empresa" />
+              <input type="text" name="empresa" id="hx-empresa" placeholder="Nombre de la empresa" required />
             </div>
             <div class="form-group">
-              <label>Cargo *</label>
-              <input id="hx-cargo" type="text" placeholder="Su rol en la empresa" />
+              <label>Cargo</label>
+              <input type="text" name="cargo" id="hx-cargo" placeholder="Su rol en la empresa" />
             </div>
           </div>
           <div class="form-group">
             <label>¿Cuántos empleados tiene su empresa?</label>
-            <select id="hx-empleados">
+            <select name="empleados" id="hx-empleados">
               <option value="">Seleccionar</option>
               <option>Menos de 50 empleados</option>
               <option>50 – 200 empleados</option>
@@ -700,7 +701,7 @@ footer{background:var(--dark);padding:56px 0 28px;}
           </div>
           <div class="form-group">
             <label>¿En qué fase está interesado?</label>
-            <select id="hx-fase">
+            <select name="fase" id="hx-fase">
               <option value="">Seleccionar</option>
               <option>Fase 1 — Diagnóstico estratégico</option>
               <option>Fase 2 — Implementación</option>
@@ -710,18 +711,14 @@ footer{background:var(--dark);padding:56px 0 28px;}
           </div>
           <div class="form-group">
             <label>¿Cuál es su principal desafío operativo?</label>
-            <textarea id="hx-desafio" placeholder="Describa brevemente los procesos o ineficiencias que le generan más problemas en su operación..."></textarea>
+            <textarea name="mensaje" id="hx-desafio" placeholder="Describa brevemente los procesos o ineficiencias que le generan más problemas en su operación..."></textarea>
           </div>
-          <!-- HONEYPOT -->
-          <div style="display:none;" aria-hidden="true">
-            <label for="hx-confirm">No completar</label>
-            <input type="text" id="hx-confirm" name="confirm" tabindex="-1" autocomplete="off" />
-          </div>
-          <button class="form-submit" id="hx-submit" onclick="hanuxEnviar(event)">
+
+          <button type="submit" class="form-submit" id="hx-submit">
             Solicitar diagnóstico estratégico →
           </button>
           <p class="form-note">Al enviar acepta nuestra política de privacidad. No enviamos spam.</p>
-        </div>
+        </form>
       </div>
     </div>
   </div>
@@ -772,11 +769,7 @@ footer{background:var(--dark);padding:56px 0 28px;}
 </footer>
 
 <script>
-/* ── CONFIGURACIÓN ── */
-var FORMSPREE_ENDPOINT = "https://formspree.io/f/xojknqwk";
-var EMAIL_DESTINO      = "hanuxcorp@gmail.com";
-
-/* Scroll suave + efecto color al hacer clic en CTAs */
+/* Scroll suave + efecto color en CTAs */
 function hanuxIrA(destino, btn) {
   if (btn) {
     btn.classList.add("active");
@@ -787,104 +780,6 @@ function hanuxIrA(destino, btn) {
     var top = el.getBoundingClientRect().top + window.pageYOffset - 80;
     window.scrollTo({ top: top, behavior: "smooth" });
   }
-}
-
-/* Validación de campos obligatorios + honeypot */
-function hanuxValidar() {
-  /* Honeypot: si tiene contenido es un bot */
-  var trap = document.getElementById("hx-confirm");
-  if (trap && trap.value) { return false; }
-
-  var nombre  = document.getElementById("hx-nombre").value.trim();
-  var email   = document.getElementById("hx-email").value.trim();
-  var empresa = document.getElementById("hx-empresa").value.trim();
-
-  if (!nombre)  { alert("Por favor ingrese su nombre.");              return false; }
-  if (!email)   { alert("Por favor ingrese su email corporativo.");   return false; }
-  if (!/\S+@\S+\.\S+/.test(email)) { alert("El email no es válido."); return false; }
-  if (!empresa) { alert("Por favor ingrese el nombre de su empresa."); return false; }
-  return true;
-}
-
-/* Recolectar todos los campos del formulario */
-function hanuxDatos() {
-  return {
-    nombre:    document.getElementById("hx-nombre").value.trim(),
-    apellido:  document.getElementById("hx-apellido").value.trim(),
-    email:     document.getElementById("hx-email").value.trim(),
-    empresa:   document.getElementById("hx-empresa").value.trim(),
-    cargo:     document.getElementById("hx-cargo").value.trim(),
-    empleados: document.getElementById("hx-empleados").value,
-    fase:      document.getElementById("hx-fase").value,
-    desafio:   document.getElementById("hx-desafio").value.trim()
-  };
-}
-
-/* Mostrar mensaje de éxito */
-function hanuxMostrarExito() {
-  var fs = document.getElementById("form-success");
-  var fe = document.getElementById("form-error");
-  var hf = document.getElementById("hanux-form");
-  if (fe) fe.style.display = "none";
-  if (fs) fs.style.display = "block";
-  if (hf) hf.style.display = "none";
-  if (fs) fs.scrollIntoView({ behavior: "smooth", block: "center" });
-}
-
-/* Mostrar mensaje de error */
-function hanuxMostrarError() {
-  var fe = document.getElementById("form-error");
-  if (fe) {
-    fe.style.display = "block";
-    fe.scrollIntoView({ behavior: "smooth", block: "center" });
-  }
-}
-
-/* Envío del formulario */
-function hanuxEnviar(e) {
-  e.preventDefault();
-  if (!hanuxValidar()) return;
-
-  var btn = document.getElementById("hx-submit");
-  btn.textContent = "Enviando...";
-  btn.disabled = true;
-
-  var d = hanuxDatos();
-
-  fetch(FORMSPREE_ENDPOINT, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Accept": "application/json"
-    },
-    body: JSON.stringify({
-      nombre:    d.nombre + " " + d.apellido,
-      email:     d.email,
-      empresa:   d.empresa,
-      cargo:     d.cargo,
-      empleados: d.empleados,
-      fase:      d.fase,
-      mensaje:   d.desafio,
-      _subject:  "Diagnostico solicitado — " + d.empresa,
-      _gotcha:   ""
-    })
-  })
-  .then(function(response) {
-    if (response.ok) {
-      hanuxMostrarExito();
-    } else {
-      return response.json().then(function(data) {
-        console.error("Formspree error:", data);
-        throw new Error("Error " + response.status);
-      });
-    }
-  })
-  .catch(function(err) {
-    console.error("Error al enviar formulario:", err);
-    btn.textContent = "Solicitar diagnóstico estratégico →";
-    btn.disabled = false;
-    hanuxMostrarError();
-  });
 }
 </script>
 
