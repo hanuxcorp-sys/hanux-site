@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hanux Corp — Inteligencia Operativa para Empresas</title>
+<title>Hannux Corp — Automatización de Procesos Empresariales con IA</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -18,6 +18,7 @@ html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',sans-serif;background:var(--white);color:var(--dark);overflow-x:hidden;line-height:1.6;}
 h1,h2,h3,h4,h5,nav,.logo{font-family:'Poppins',sans-serif;}
 img{max-width:100%;}
+
 
 /* ── UTILITIES ── */
 .container{max-width:1140px;margin:0 auto;padding:0 5%;}
@@ -34,6 +35,7 @@ img{max-width:100%;}
 .divider{width:48px;height:3px;background:var(--green-mid);border-radius:2px;margin:20px 0;}
 .divider.center-d{margin:20px auto;}
 
+
 /* ── BUTTONS ── */
 .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;border:none;border-radius:8px;padding:14px 26px;cursor:pointer;text-decoration:none;transition:all .2s;}
 .btn-primary{background:var(--green-mid);color:#fff;}
@@ -49,18 +51,21 @@ img{max-width:100%;}
 .btn-lg{font-size:15px;padding:16px 32px;}
 .btn-arrow::after{content:'→';font-size:16px;}
 
+
 /* ── NAV ── */
 nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);height:70px;display:flex;align-items:center;}
 .nav-inner{width:100%;max-width:1140px;margin:0 auto;padding:0 5%;display:flex;align-items:center;justify-content:space-between;}
-.logo{text-decoration:none;display:inline-flex;align-items:center;}
-.logo img{height:44px;width:auto;display:block;}
-.logo span{color:var(--green-mid);}
+.logo{text-decoration:none;display:inline-flex;align-items:center;gap:10px;}
+.logo-mark{width:36px;height:36px;background:var(--dark);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:14px;font-weight:800;color:#2FA67A;}
+.logo-name{font-family:'Poppins',sans-serif;font-size:17px;font-weight:700;color:var(--dark);}
+.logo-name span{color:var(--green-mid);}
 .nav-links{display:flex;gap:30px;list-style:none;}
 .nav-links a{text-decoration:none;color:var(--slate);font-size:13.5px;font-weight:500;transition:color .15s;}
 .nav-links a:hover{color:var(--blue-mid);}
 .nav-cta{background:var(--blue-mid);color:#fff;border:none;padding:9px 20px;border-radius:7px;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;cursor:pointer;text-decoration:none;display:inline-block;transition:all .2s;}
 .nav-cta:hover{background:var(--blue);}
 .nav-cta.active{background:var(--green-mid);transform:scale(.97);}
+
 
 /* ── HERO ── */
 .hero{background:var(--dark);position:relative;overflow:hidden;padding:100px 0 90px;}
@@ -94,6 +99,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 .hpf-badge{background:rgba(200,146,42,.15);border:1px solid rgba(200,146,42,.3);color:#e8b04a;font-size:11px;font-weight:600;padding:4px 12px;border-radius:12px;}
 .hpf-text{font-size:11px;color:#7a90a8;}
 
+
 /* ── TRUST BAR ── */
 .trust-bar{background:var(--white);border-bottom:1px solid var(--border-light);padding:20px 0;}
 .trust-inner{max-width:1140px;margin:0 auto;padding:0 5%;display:flex;flex-direction:column;align-items:center;gap:14px;}
@@ -102,6 +108,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 .trust-items{display:flex;gap:24px;align-items:center;justify-content:center;flex-wrap:wrap;}
 .trust-item{display:flex;align-items:center;gap:7px;font-size:13px;color:var(--slate);font-weight:500;}
 .trust-check{width:18px;height:18px;border-radius:50%;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--green);}
+
 
 /* ── PROBLEMS ── */
 .problems{background:var(--bg);padding:90px 0;}
@@ -118,6 +125,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 .problems-insight{background:linear-gradient(135deg,var(--dark) 0%,var(--dark2) 100%);border-radius:16px;padding:36px;margin-top:20px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;}
 .pi-text h3{font-size:20px;font-weight:700;color:#fff;margin-bottom:8px;}
 .pi-text p{font-size:14px;color:#94aac8;max-width:480px;line-height:1.65;}
+
 
 /* ── METHODOLOGY ── */
 .methodology{background:var(--white);padding:100px 0;}
@@ -154,6 +162,43 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 .md-iso-badge{display:flex;align-items:center;gap:8px;background:var(--gold-light);border:1px solid rgba(200,146,42,.25);border-radius:8px;padding:10px 16px;}
 .md-iso-badge span{font-size:12px;color:var(--gold);font-weight:600;}
 
+
+/* ── CASE STUDY ── */
+.case-study{background:var(--bg);padding:100px 0;}
+.case-flow{display:flex;align-items:center;gap:0;margin-top:48px;flex-wrap:wrap;justify-content:center;}
+.case-step{background:var(--white);border:1.5px solid var(--border);border-radius:14px;padding:22px 20px;text-align:center;min-width:130px;flex:1;max-width:160px;position:relative;transition:all .25s;}
+.case-step:hover{border-color:var(--green-mid);transform:translateY(-3px);box-shadow:0 8px 24px rgba(47,166,122,.1);}
+.case-step-icon{font-size:24px;margin-bottom:10px;display:block;}
+.case-step-label{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:var(--dark);margin-bottom:4px;}
+.case-step-sub{font-size:11px;color:var(--gray);line-height:1.4;}
+.case-arrow{color:var(--green-mid);font-size:20px;font-weight:700;padding:0 8px;flex-shrink:0;}
+.case-benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:36px;}
+.case-benefit{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px;display:flex;align-items:flex-start;gap:14px;}
+.case-benefit-check{width:32px;height:32px;min-width:32px;border-radius:8px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--green);}
+.case-benefit h4{font-size:14px;font-weight:600;color:var(--dark);margin-bottom:4px;}
+.case-benefit p{font-size:12.5px;color:var(--gray);line-height:1.55;}
+
+
+/* ── SERVICES ── */
+.services{background:var(--white);padding:100px 0;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;}
+.service-card{border-radius:16px;padding:36px;border:1.5px solid var(--border);position:relative;overflow:hidden;transition:all .25s;}
+.service-card:hover{border-color:var(--blue-mid);transform:translateY(-4px);box-shadow:0 12px 40px rgba(47,95,167,.1);}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;}
+.service-card:nth-child(1)::before{background:linear-gradient(90deg,#2F5FA7,#4a7bc8);}
+.service-card:nth-child(2)::before{background:linear-gradient(90deg,#1A8C65,#2FA67A);}
+.service-card:nth-child(3)::before{background:linear-gradient(90deg,#C8922A,#e8b04a);}
+.service-icon{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:20px;}
+.si-blue{background:var(--blue-light);}
+.si-green{background:var(--green-light);}
+.si-gold{background:var(--gold-light);}
+.service-card h3{font-size:18px;font-weight:700;color:var(--dark);margin-bottom:10px;}
+.service-card p{font-size:13.5px;color:var(--gray);line-height:1.7;margin-bottom:20px;}
+.service-items{list-style:none;display:flex;flex-direction:column;gap:8px;}
+.service-items li{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--slate);}
+.service-items li::before{content:'✓';width:18px;height:18px;min-width:18px;border-radius:50%;background:var(--green-light);color:var(--green);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;}
+
+
 /* ── PHASES ── */
 .phases{background:var(--bg);padding:100px 0;}
 .phases-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:56px;}
@@ -187,6 +232,18 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 .phase-card-2 .phase-price-label{color:#94aac8;}
 .phase-deco{position:absolute;bottom:-30px;right:-30px;width:160px;height:160px;border-radius:50%;opacity:.04;background:var(--blue-mid);}
 .phase-card-2 .phase-deco{background:#2FA67A;opacity:.06;}
+/* Third card spanning full width */
+.phases-grid-3{display:grid;grid-template-columns:1fr;gap:28px;margin-top:28px;}
+.phase-card-3{background:linear-gradient(135deg,var(--dark) 0%,#0e2d4a 100%);border:1.5px solid rgba(255,255,255,.08);border-radius:20px;padding:44px;display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap;}
+.phase-card-3 .phase-num{color:#5ecfaa;font-family:'Poppins',sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;margin-bottom:12px;}
+.phase-card-3 h3{font-size:24px;font-weight:700;color:#fff;margin-bottom:12px;}
+.phase-card-3 > p{font-size:15px;color:#94aac8;line-height:1.75;max-width:500px;}
+.phase-card-3-right{display:flex;gap:24px;flex-wrap:wrap;}
+.p3-stat{text-align:center;}
+.p3-stat-num{font-family:'Poppins',sans-serif;font-size:32px;font-weight:800;color:#fff;}
+.p3-stat-num span{color:#2FA67A;}
+.p3-stat-label{font-size:12px;color:#7a90a8;margin-top:4px;}
+
 
 /* ── BENEFITS ── */
 .benefits{background:var(--bg);padding:100px 0;}
@@ -203,6 +260,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 .benefit-card p{font-size:13.5px;color:var(--gray);line-height:1.65;}
 .benefit-stat{display:inline-block;font-family:'Poppins',sans-serif;font-size:28px;font-weight:800;color:var(--green-mid);margin-top:16px;}
 
+
 /* ── CTA BAND ── */
 .cta-band{background:linear-gradient(135deg,#0b1f3a 0%,#0e2d4a 50%,#071624 100%);padding:100px 0;position:relative;overflow:hidden;}
 .cta-band::before{content:'';position:absolute;top:-100px;left:50%;transform:translateX(-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(47,166,122,.1) 0%,transparent 65%);pointer-events:none;}
@@ -214,6 +272,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 .cta-features{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;}
 .cta-feat{display:flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.7);}
 .cta-feat-icon{width:18px;height:18px;border-radius:50%;background:rgba(47,166,122,.2);display:flex;align-items:center;justify-content:center;font-size:9px;color:#2FA67A;}
+
 
 /* ── CONTACT ── */
 .contact{background:var(--white);padding:100px 0;}
@@ -243,26 +302,29 @@ nav{position:sticky;top:0;z-index:200;background:rgba(255,255,255,.95);backdrop-
 .form-submit{width:100%;background:var(--blue-mid);color:#fff;border:none;padding:15px;border-radius:8px;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;cursor:pointer;transition:background .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
 .form-submit:hover{background:var(--blue);}
 .form-note{font-size:11.5px;color:var(--muted);text-align:center;margin-top:10px;}
-/* form states */
 #form-success{display:none;background:#e8f5f0;border:1.5px solid var(--green-mid);border-radius:12px;padding:28px;text-align:center;margin-bottom:20px;}
 #form-success h4{font-family:'Poppins',sans-serif;color:var(--green);font-size:17px;margin-bottom:6px;}
 #form-success p{color:#1a6b50;font-size:14px;}
 #form-error{display:none;background:#fef2f2;border:1.5px solid #e24b4a;border-radius:12px;padding:14px;text-align:center;margin-bottom:20px;}
 #form-error p{color:#a32d2d;font-size:13px;}
 
+
 /* ── FOOTER ── */
 footer{background:var(--dark);padding:56px 0 28px;}
 .footer-inner{max-width:1140px;margin:0 auto;padding:0 5%;}
 .footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px;}
-.footer-logo{display:inline-block;}
-.footer-logo img{height:52px;width:auto;display:block;}
-.footer-brand p{font-size:13px;color:#6b8099;line-height:1.7;margin-top:12px;max-width:240px;}
+.footer-logo{display:inline-flex;align-items:center;gap:10px;margin-bottom:12px;}
+.footer-logo-mark{width:36px;height:36px;background:rgba(255,255,255,.08);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;color:#2FA67A;}
+.footer-logo-name{font-family:'Poppins',sans-serif;font-size:16px;font-weight:700;color:#fff;}
+.footer-logo-name span{color:#2FA67A;}
+.footer-brand p{font-size:13px;color:#6b8099;line-height:1.7;max-width:240px;}
 .footer-col h4{font-family:'Poppins',sans-serif;font-size:12px;font-weight:700;color:#fff;letter-spacing:.07em;text-transform:uppercase;margin-bottom:16px;}
 .footer-col ul{list-style:none;}
 .footer-col ul li{margin-bottom:10px;}
 .footer-col ul li a{color:#6b8099;text-decoration:none;font-size:13px;transition:color .15s;}
 .footer-col ul li a:hover{color:#fff;}
 .footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:#4a6080;flex-wrap:wrap;gap:12px;}
+
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
@@ -277,6 +339,9 @@ footer{background:var(--dark);padding:56px 0 28px;}
   .method-header{grid-template-columns:1fr;}
   .md-items{grid-template-columns:repeat(2,1fr);}
   .problems-grid{grid-template-columns:1fr;}
+  .services-grid{grid-template-columns:1fr;}
+  .case-benefits{grid-template-columns:1fr 1fr;}
+  .phase-card-3{flex-direction:column;align-items:flex-start;}
 }
 @media(max-width:600px){
   .nav-links{display:none;}
@@ -285,25 +350,32 @@ footer{background:var(--dark);padding:56px 0 28px;}
   .footer-top{grid-template-columns:1fr;}
   .pillars-grid{grid-template-columns:1fr;}
   .md-items{grid-template-columns:1fr;}
+  .case-benefits{grid-template-columns:1fr;}
+  .case-flow{gap:4px;}
+  .case-arrow{display:none;}
 }
 </style>
 </head>
 <body>
 
+
 <!-- ══ NAV ══ -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="logo">
-      <img src="images/Logo_Hanux_Corp_cabecera.jpg" alt="Hanux Corp — Automate · Innovate · Optimize" />
+      <div class="logo-mark">HX</div>
+      <div class="logo-name">Hannux<span> Corp</span></div>
     </a>
     <ul class="nav-links">
-      <li><a href="#metodologia">Metodología</a></li>
-      <li><a href="#beneficios">Beneficios</a></li>
+      <li><a href="#enfoque">Enfoque</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#modelo">Modelo</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
-    <a href="#contacto" class="nav-cta" onclick="hanuxIrA('#contacto',this)">Inicia tu transformación digital</a>
+    <a href="#contacto" class="nav-cta" onclick="hannuxIrA('#contacto',this)">Solicitar diagnóstico</a>
   </div>
 </nav>
+
 
 <!-- ══ HERO ══ -->
 <section class="hero">
@@ -312,164 +384,167 @@ footer{background:var(--dark);padding:56px 0 28px;}
   <div class="hero-bg-glow2"></div>
   <div class="hero-inner">
     <div class="hero-content">
-      <div class="hero-tag"><span class="hero-tag-dot"></span> Inteligencia Operativa Empresarial</div>
-      <h1>Transformamos operaciones mediante <em>automatización</em> e inteligencia operativa</h1>
-      <p class="hero-sub">Analizamos cómo funciona su empresa, identificamos oportunidades de optimización y automatizamos procesos clave para que su operación escale sin fricción.</p>
+      <div class="hero-tag"><span class="hero-tag-dot"></span> Automatización de Procesos con IA</div>
+      <h1>Automatizamos procesos empresariales con IA, <em>sin reemplazar</em> tus sistemas</h1>
+      <p class="hero-sub">Integramos ERP, facturas y operaciones en flujos automáticos que eliminan tareas manuales, reducen errores y aceleran tu empresa.</p>
       <div class="hero-ctas">
-        <button class="btn btn-primary btn-lg btn-arrow" onclick="hanuxIrA('#contacto',this)">Inicia tu transformación digital </button>
-        <button class="btn btn-outline-white btn-lg" onclick="hanuxIrA('#metodologia',this)">Ver metodología</button>
+        <button class="btn btn-primary btn-lg btn-arrow" onclick="hannuxIrA('#contacto',this)">Solicitar diagnóstico de automatización </button>
+        <button class="btn btn-outline-white btn-lg" onclick="hannuxIrA('#enfoque',this)">Ver nuestro enfoque</button>
       </div>
       <div class="hero-proof">
         <div class="hero-proof-item">
-          <div class="hero-proof-num">5<span> pilares</span></div>
-          <div class="hero-proof-label">de análisis operativo</div>
+          <div class="hero-proof-num">70<span>%</span></div>
+          <div class="hero-proof-label">menos tareas manuales</div>
         </div>
         <div class="hero-proof-item">
-          <div class="hero-proof-num">2<span> fases</span></div>
-          <div class="hero-proof-label">diagnóstico e implementación</div>
+          <div class="hero-proof-num">2<span> semanas</span></div>
+          <div class="hero-proof-label">para tener el diagnóstico</div>
         </div>
         <div class="hero-proof-item">
-          <div class="hero-proof-num">ISO<span>-ready</span></div>
-          <div class="hero-proof-label">documentación compatible</div>
+          <div class="hero-proof-num">ROI<span> real</span></div>
+          <div class="hero-proof-label">medible desde el día 1</div>
         </div>
       </div>
     </div>
     <div class="hero-visual">
       <div class="hero-panel">
-        <div class="hero-panel-title">Hanux Process Intelligence Framework</div>
+        <div class="hero-panel-title">Caso: Automatización de facturas</div>
         <div class="hpif-pills">
           <div class="hpif-pill">
             <div class="hpif-num">01</div>
-            <div class="hpif-text"><strong>Process Discovery</strong><span>Entender cómo funciona la empresa</span></div>
+            <div class="hpif-text"><strong>PDF recibido</strong><span>Factura de proveedor llega por email</span></div>
           </div>
           <div class="hpif-pill">
             <div class="hpif-num">02</div>
-            <div class="hpif-text"><strong>Process Mapping</strong><span>Diagramas de flujo y BPMN</span></div>
+            <div class="hpif-text"><strong>OCR + IA</strong><span>Extracción e interpretación automática de datos</span></div>
           </div>
           <div class="hpif-pill">
             <div class="hpif-num">03</div>
-            <div class="hpif-text"><strong>Operational Analysis</strong><span>Detectar ineficiencias y cuellos de botella</span></div>
+            <div class="hpif-text"><strong>Validación automática</strong><span>Contraste contra órdenes de compra y reglas</span></div>
           </div>
           <div class="hpif-pill">
             <div class="hpif-num g">04</div>
-            <div class="hpif-text"><strong>Automation &amp; AI Opportunities</strong><span>Identificar oportunidades de IA</span></div>
+            <div class="hpif-text"><strong>JSON estructurado</strong><span>Datos normalizados listos para integrar</span></div>
           </div>
           <div class="hpif-pill">
             <div class="hpif-num g">05</div>
-            <div class="hpif-text"><strong>Transformation Roadmap</strong><span>Plan de optimización operativa</span></div>
+            <div class="hpif-text"><strong>Carga en ERP</strong><span>Registro automático, sin intervención humana</span></div>
           </div>
         </div>
         <div class="hero-panel-footer">
-          <span class="hpf-badge">ISO-compatible</span>
-          <span class="hpf-text">El informe sirve como documentación base para normas ISO</span>
+          <span class="hpf-badge">Sin carga manual</span>
+          <span class="hpf-text">Proceso trazable y auditable en cada paso</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+
 <!-- ══ TRUST BAR ══ -->
 <div class="trust-bar">
   <div class="trust-inner">
-    <span class="trust-label">Nuestro enfoque</span>
+    <span class="trust-label">Nuestro principio</span>
     <div class="trust-divider"></div>
     <div class="trust-items">
-      <div class="trust-item"><span class="trust-check">✓</span> Primero entendemos su empresa</div>
-      <div class="trust-item"><span class="trust-check">✓</span> Diagnóstico antes de implementar</div>
-      <div class="trust-item"><span class="trust-check">✓</span> Resultados medibles y documentados</div>
+      <div class="trust-item"><span class="trust-check">✓</span> Primero ordenamos, después automatizamos</div>
+      <div class="trust-item"><span class="trust-check">✓</span> Integración con tus sistemas actuales</div>
+      <div class="trust-item"><span class="trust-check">✓</span> Sin reemplazar lo que ya funciona</div>
       <div class="trust-item"><span class="trust-check">✓</span> Diagnóstico descontable del proyecto</div>
     </div>
   </div>
 </div>
 
+
 <!-- ══ PROBLEMS ══ -->
 <section class="problems" id="problemas">
   <div class="container">
-    <div class="section-eyebrow"><span class="badge badge-blue"><span class="badge-dot"></span>¿Su empresa se identifica?</span></div>
-    <h2 class="section-title">Los síntomas de una operación<br>que necesita transformarse</h2>
+    <div class="section-eyebrow"><span class="badge badge-blue"><span class="badge-dot"></span>¿Tu empresa se identifica?</span></div>
+    <h2 class="section-title">Procesos desordenados que cuestan tiempo,<br>dinero y errores</h2>
     <div class="divider"></div>
     <div class="problems-grid">
       <div class="problem-card">
         <div class="problem-icon pi-orange">📋</div>
         <div>
-          <h3>Procesos manuales que frenan el crecimiento</h3>
-          <p>Operaciones críticas dependen de personas realizando tareas repetitivas a mano, generando errores, demoras y costos innecesarios que se multiplican al escalar.</p>
+          <h3>Tareas manuales que consumen horas del equipo</h3>
+          <p>Tu equipo copia datos entre sistemas, completa planillas a mano y envía emails de seguimiento que podrían ejecutarse solos. Cada hora de trabajo manual es un costo que escala con la operación.</p>
         </div>
       </div>
       <div class="problem-card">
         <div class="problem-icon pi-red">🔗</div>
         <div>
-          <h3>Sistemas desconectados e información duplicada</h3>
-          <p>ERP, CRM, facturación y logística operan en silos. Los equipos sincronizan información manualmente entre herramientas que no se comunican entre sí.</p>
+          <h3>Sistemas no integrados que generan doble trabajo</h3>
+          <p>ERP, CRM, facturación y logística funcionan como islas separadas. La información se sincroniza a mano, con retrasos y errores que nadie detecta hasta que el problema ya creció.</p>
         </div>
       </div>
       <div class="problem-card">
-        <div class="problem-icon pi-yellow">⏱️</div>
+        <div class="problem-icon pi-yellow">⚠️</div>
         <div>
-          <h3>Tareas repetitivas que consumen tiempo valioso</h3>
-          <p>Su equipo invierte horas semanales en actividades que no agregan valor: copiar datos, enviar notificaciones, generar reportes o completar formularios.</p>
+          <h3>Errores que se repiten porque el proceso no está definido</h3>
+          <p>Cuando los procesos dependen de personas y no de reglas claras, los errores son inevitables. Un campo mal cargado, un paso omitido o un archivo mal nombrado puede frenar toda la operación.</p>
         </div>
       </div>
       <div class="problem-card">
         <div class="problem-icon pi-purple">📉</div>
         <div>
-          <h3>Baja eficiencia operativa sin visibilidad real</h3>
-          <p>No existe una vista centralizada del estado operativo. Las decisiones se toman con datos desactualizados, sin métricas claras ni indicadores de desempeño.</p>
+          <h3>Sin visibilidad real del estado operativo</h3>
+          <p>No sabés en qué punto está cada proceso, quién hizo qué ni cuánto tiempo llevó. Las decisiones se toman sobre datos desactualizados y sin trazabilidad sobre lo que realmente ocurrió.</p>
         </div>
       </div>
     </div>
     <div class="problems-insight">
       <div class="pi-text">
-        <h3>El problema no es la tecnología — es no saber por dónde empezar</h3>
-        <p>La mayoría de las empresas tienen herramientas tecnológicas pero no las usan de forma coordinada. Antes de automatizar, hay que entender cómo funciona realmente la operación.</p>
+        <h3>El problema no es la falta de tecnología — es no saber qué automatizar primero</h3>
+        <p>La mayoría de las empresas ya tienen herramientas, pero no las usan de forma coordinada. Antes de automatizar, hay que mapear, ordenar y priorizar qué procesos generan más impacto.</p>
       </div>
-      <button class="btn btn-primary btn-arrow" onclick="hanuxIrA('#metodologia',this)">Ver nuestra metodología </button>
+      <button class="btn btn-primary btn-arrow" onclick="hannuxIrA('#enfoque',this)">Ver nuestro enfoque </button>
     </div>
   </div>
 </section>
 
-<!-- ══ METHODOLOGY ══ -->
-<section class="methodology" id="metodologia">
+
+<!-- ══ ENFOQUE ══ -->
+<section class="methodology" id="enfoque">
   <div class="container">
     <div class="method-header">
       <div>
-        <div class="method-framework-label">Nuestra metodología</div>
-        <h2 class="section-title">Hanux Process<br>Intelligence Framework</h2>
+        <div class="method-framework-label">Nuestro enfoque</div>
+        <h2 class="section-title">Primero ordenamos.<br>Después automatizamos.</h2>
         <div class="divider"></div>
-        <p style="font-size:15px;color:var(--gray);line-height:1.75;">Un framework propietario de análisis operativo que nos permite entender en profundidad cómo funciona su empresa antes de proponer ninguna solución tecnológica.</p>
+        <p style="font-size:15px;color:var(--gray);line-height:1.75;">No automatizamos procesos rotos. Antes de implementar cualquier solución, analizamos cómo funciona realmente tu operación, detectamos los puntos críticos y definimos qué cambiar para que la automatización tenga impacto real.</p>
       </div>
       <div class="method-header-right">
-        <p>No implementamos tecnología por moda ni por tendencia. Nuestro punto de partida siempre es el mismo: <strong style="color:var(--dark)">entender primero, automatizar después.</strong></p>
-        <p>El framework analiza su operación a través de 5 pilares que cubren desde la comprensión de los procesos actuales hasta la definición de un plan de transformación.</p>
-        <button class="btn btn-outline" onclick="hanuxIrA('#contacto',this)">Inicia tu transformación digital</button>
+        <p>Nuestro punto de partida siempre es el mismo: <strong style="color:var(--dark)">entender el proceso antes de tocarlo.</strong> Eso nos permite automatizar con precisión y sin romper lo que ya funciona.</p>
+        <p>El resultado no es solo software: es un proceso nuevo, trazable y que corre sin intervención humana desde el primer día.</p>
+        <button class="btn btn-outline" onclick="hannuxIrA('#contacto',this)">Solicitar diagnóstico de automatización</button>
       </div>
     </div>
 
     <div class="pillars-grid">
       <div class="pillar-card">
         <div class="pillar-num">01</div>
-        <h3>Process Discovery</h3>
-        <p>Entendemos cómo funciona realmente la empresa, más allá del organigrama formal. Mapeamos actores, sistemas y flujos de información.</p>
+        <h3>Analizar procesos</h3>
+        <p>Mapeamos cómo funciona realmente tu operación: qué pasos existen, quién los ejecuta y qué sistemas están involucrados.</p>
       </div>
       <div class="pillar-card">
         <div class="pillar-num" style="background:var(--green-light);color:var(--green);">02</div>
-        <h3>Process Mapping</h3>
-        <p>Documentamos los procesos con diagramas de flujo y notación BPMN, generando una base formal de conocimiento operativo.</p>
+        <h3>Detectar mejoras</h3>
+        <p>Identificamos tareas manuales, cuellos de botella, errores recurrentes y oportunidades de automatización con alto impacto.</p>
       </div>
       <div class="pillar-card">
         <div class="pillar-num" style="background:#f5f3ff;color:#7c3aed;">03</div>
-        <h3>Operational Analysis</h3>
-        <p>Detectamos ineficiencias, tareas manuales, cuellos de botella y costos ocultos en la operación cotidiana de la empresa.</p>
+        <h3>Evaluar riesgos</h3>
+        <p>Analizamos qué puede fallar al automatizar, qué dependencias existen y cómo garantizar continuidad durante la transición.</p>
       </div>
       <div class="pillar-card">
         <div class="pillar-num" style="background:var(--gold-light);color:var(--gold);">04</div>
-        <h3>Automation &amp; AI Opportunities</h3>
-        <p>Identificamos con precisión qué procesos se pueden automatizar, dónde aplicar IA y qué integraciones entre sistemas tienen mayor impacto.</p>
+        <h3>Definir roadmap</h3>
+        <p>Ordenamos las automatizaciones por impacto, viabilidad y costo. Tenés un plan concreto con fases, plazos y entregables.</p>
       </div>
       <div class="pillar-card">
         <div class="pillar-num" style="background:var(--dark);color:#fff;">05</div>
-        <h3>Transformation Roadmap</h3>
-        <p>Definimos un plan de optimización operativa priorizado por impacto, viabilidad y plazos de implementación.</p>
+        <h3>Automatizar</h3>
+        <p>Implementamos los flujos automáticos, integramos los sistemas y entregamos un proceso que corre sin intervención manual.</p>
       </div>
     </div>
 
@@ -477,150 +552,350 @@ footer{background:var(--dark);padding:56px 0 28px;}
       <div class="md-header">
         <div class="md-icon">📄</div>
         <div>
-          <h3>Informe de diagnóstico estratégico</h3>
-          <p>El cliente recibe un entregable completo y accionable al finalizar la Fase 1</p>
+          <h3>Diagnóstico de automatización</h3>
+          <p>Al finalizar el análisis, recibís un informe completo y accionable en 2 semanas</p>
         </div>
       </div>
       <div class="md-items">
         <div class="md-item">
           <div class="md-item-icon">🗺️</div>
-          <h4>Mapas de procesos</h4>
-          <p>Diagramas BPMN de todos los procesos relevantes analizados</p>
+          <h4>Mapa de procesos actuales</h4>
+          <p>Diagrama de cada proceso analizado con actores, sistemas y puntos críticos</p>
         </div>
         <div class="md-item">
           <div class="md-item-icon">🔍</div>
-          <h4>Análisis operativo</h4>
-          <p>Detalle de ineficiencias, brechas y oportunidades de mejora detectadas</p>
+          <h4>Análisis de ineficiencias</h4>
+          <p>Detalle de tareas manuales, errores frecuentes y costos ocultos detectados</p>
         </div>
         <div class="md-item">
           <div class="md-item-icon">🤖</div>
           <h4>Oportunidades de automatización</h4>
-          <p>Lista priorizada de procesos automatizables con estimación de impacto</p>
+          <p>Lista priorizada de procesos a automatizar con estimación de impacto en horas y errores</p>
         </div>
         <div class="md-item">
           <div class="md-item-icon">🚀</div>
-          <h4>Roadmap de transformación</h4>
-          <p>Plan de implementación con fases y plazos</p>
+          <h4>Roadmap de implementación</h4>
+          <p>Plan de trabajo con fases, plazos y presupuesto estimado para cada automatización</p>
         </div>
       </div>
       <div class="md-pricing">
         <div class="md-iso-badge">
-          <span>⭐</span>
-          <span>El informe puede utilizarse como documentación base para certificaciones ISO</span>
+          <span>💡</span>
+          <span>El diagnóstico se descuenta íntegramente si avanzás con la implementación</span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ BENEFITS ══ -->
-<section class="benefits" id="beneficios">
+
+<!-- ══ CASE STUDY ══ -->
+<section class="case-study" id="caso">
   <div class="container">
-    <div class="center section-eyebrow"><span class="badge badge-blue"><span class="badge-dot"></span>Resultados tangibles</span></div>
-    <h2 class="section-title center">Lo que cambia después de<br>implementar con Hanux</h2>
-    <p class="section-sub center">Nuestros clientes no solo automatizan tareas — transforman la capacidad operativa de su empresa para crecer sin contratar más personas para hacer lo mismo.</p>
-    <div class="benefits-grid">
-      <div class="benefit-card">
-        <div class="benefit-icon bi-green">⚡</div>
-        <h3>Reducción drástica de tareas manuales</h3>
-        <p>Los procesos repetitivos que consumían horas del equipo se ejecutan automáticamente, con mayor velocidad y sin errores humanos.</p>
-        <div class="benefit-stat">↓ 70%</div>
+    <div class="section-eyebrow"><span class="badge badge-green"><span class="badge-dot"></span>Ejemplo concreto</span></div>
+    <h2 class="section-title">Automatización de facturas:<br>de PDF a ERP sin intervención humana</h2>
+    <p class="section-sub">Un caso real de lo que hacemos: recibir una factura en PDF y que llegue validada y cargada en el ERP de forma completamente automática.</p>
+    <div class="divider"></div>
+
+    <div class="case-flow">
+      <div class="case-step">
+        <span class="case-step-icon">📄</span>
+        <div class="case-step-label">PDF</div>
+        <div class="case-step-sub">Factura recibida por email o portal</div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon bi-blue">📈</div>
-        <h3>Mayor eficiencia operativa medible</h3>
-        <p>Cada proceso optimizado genera métricas claras. La eficiencia no es un concepto abstracto — es un número que puede medir mes a mes.</p>
-        <div class="benefit-stat">3× más rápido</div>
+      <div class="case-arrow">→</div>
+      <div class="case-step">
+        <span class="case-step-icon">🔍</span>
+        <div class="case-step-label">OCR</div>
+        <div class="case-step-sub">Extracción de texto e imágenes</div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon bi-gold">🔗</div>
-        <h3>Sistemas integrados y datos en tiempo real</h3>
-        <p>Sus herramientas tecnológicas comparten información automáticamente. Sin doble carga, sin silos, sin sincronizaciones manuales.</p>
-        <div class="benefit-stat">100% conectado</div>
+      <div class="case-arrow">→</div>
+      <div class="case-step">
+        <span class="case-step-icon">🤖</span>
+        <div class="case-step-label">IA</div>
+        <div class="case-step-sub">Interpretación y clasificación de datos</div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon bi-green">🤖</div>
-        <h3>Inteligencia artificial aplicada a su negocio</h3>
-        <p>Implementamos IA donde realmente agrega valor: análisis de datos, toma de decisiones asistida y automatización de procesos complejos.</p>
-        <div class="benefit-stat">24/7 operativo</div>
+      <div class="case-arrow">→</div>
+      <div class="case-step">
+        <span class="case-step-icon">✅</span>
+        <div class="case-step-label">Validación</div>
+        <div class="case-step-sub">Contraste automático contra reglas del negocio</div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon bi-blue">🚀</div>
-        <h3>Preparación real para escalar</h3>
-        <p>Su operación puede crecer 10x sin contratar el mismo nivel de personal adicional. Los sistemas escalan, los procesos se sostienen solos.</p>
-        <div class="benefit-stat">10× escalable</div>
+      <div class="case-arrow">→</div>
+      <div class="case-step">
+        <span class="case-step-icon">📦</span>
+        <div class="case-step-label">JSON</div>
+        <div class="case-step-sub">Datos estructurados y normalizados</div>
       </div>
-      <div class="benefit-card">
-        <div class="benefit-icon bi-gold">📄</div>
-        <h3>Documentación y trazabilidad operativa</h3>
-        <p>El diagnóstico genera documentación formal de sus procesos, útil para auditorías internas, certificaciones ISO y gestión del conocimiento.</p>
-        <div class="benefit-stat">ISO-ready</div>
+      <div class="case-arrow">→</div>
+      <div class="case-step">
+        <span class="case-step-icon">🏢</span>
+        <div class="case-step-label">ERP</div>
+        <div class="case-step-sub">Registro automático en el sistema</div>
+      </div>
+    </div>
+
+    <div class="case-benefits">
+      <div class="case-benefit">
+        <div class="case-benefit-check">✓</div>
+        <div>
+          <h4>Sin carga manual</h4>
+          <p>Nadie tiene que leer, copiar ni cargar datos. El proceso se ejecuta solo desde que llega el PDF hasta que queda registrado en el ERP.</p>
+        </div>
+      </div>
+      <div class="case-benefit">
+        <div class="case-benefit-check">✓</div>
+        <div>
+          <h4>Menos errores</h4>
+          <p>La validación automática detecta inconsistencias, duplicados y datos faltantes antes de que lleguen al sistema. Sin errores humanos de tipeo ni de criterio.</p>
+        </div>
+      </div>
+      <div class="case-benefit">
+        <div class="case-benefit-check">✓</div>
+        <div>
+          <h4>Proceso trazable</h4>
+          <p>Cada factura tiene un registro de qué pasó, cuándo y qué resultado tuvo. Auditable en cualquier momento, sin depender de quién lo procesó.</p>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ CTA BAND ══ -->
-<section class="cta-band">
-  <div class="container cta-band-inner">
-    <span class="badge badge-green" style="margin-bottom:20px;"><span class="badge-dot"></span>Primer paso sin compromiso</span>
-    <h2>Inicia tu<br>transformación digital</h2>
-    <p>Comenzamos por entender su empresa. En 2 semanas le entregamos un mapa completo de su operación con las oportunidades de automatización priorizadas por impacto.</p>
-    <div class="cta-band-btns">
-      <button class="btn btn-primary btn-lg btn-arrow" onclick="hanuxIrA('#contacto',this)">Inicia tu transformación digital </button>
-    </div>
-    <div class="cta-features">
-      <div class="cta-feat"><span class="cta-feat-icon">✓</span> Sin compromiso de implementación</div>
-      <div class="cta-feat"><span class="cta-feat-icon">✓</span> Informe entregado en 2 semanas</div>
-      <div class="cta-feat"><span class="cta-feat-icon">✓</span> Diagnóstico descontable del proyecto</div>
-      <div class="cta-feat"><span class="cta-feat-icon">✓</span> Compatible con normas ISO</div>
+
+<!-- ══ SERVICIOS ══ -->
+<section class="services" id="servicios">
+  <div class="container">
+    <div class="section-eyebrow"><span class="badge badge-blue"><span class="badge-dot"></span>Qué hacemos</span></div>
+    <h2 class="section-title">Tres bloques de servicio,<br>un solo objetivo: menos trabajo manual</h2>
+    <p class="section-sub">Trabajamos en tres capas que se complementan. Podés contratar una o las tres según la etapa en la que esté tu empresa.</p>
+    <div class="divider"></div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon si-blue">⚙️</div>
+        <h3>Automatización de procesos</h3>
+        <p>Convertimos procesos manuales en flujos automáticos que se ejecutan solos, con reglas claras, excepciones controladas y sin intervención humana para las tareas repetitivas.</p>
+        <ul class="service-items">
+          <li>Flujos de aprobación automáticos</li>
+          <li>Notificaciones y escalados sin intervención</li>
+          <li>Generación automática de documentos</li>
+          <li>Procesamiento de formularios y solicitudes</li>
+          <li>Reportes y dashboards en tiempo real</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon si-green">🧠</div>
+        <h3>Inteligencia documental (IA)</h3>
+        <p>Aplicamos modelos de IA para extraer, clasificar y validar información de documentos no estructurados: facturas, contratos, órdenes de compra, remitos y más.</p>
+        <ul class="service-items">
+          <li>Extracción de datos con OCR + IA</li>
+          <li>Clasificación automática de documentos</li>
+          <li>Validación contra reglas del negocio</li>
+          <li>Detección de anomalías y duplicados</li>
+          <li>Archivado y trazabilidad automática</li>
+        </ul>
+      </div>
+      <div class="service-card">
+        <div class="service-icon si-gold">🔗</div>
+        <h3>Integración de sistemas</h3>
+        <p>Conectamos tus herramientas para que compartan datos automáticamente. ERP, CRM, facturación, logística y APIs externas integradas sin necesidad de migrar a un sistema nuevo.</p>
+        <ul class="service-items">
+          <li>Integración ERP ↔ otros sistemas</li>
+          <li>Conectores para APIs externas</li>
+          <li>Sincronización bidireccional de datos</li>
+          <li>Middlewares y colas de mensajería</li>
+          <li>Monitoreo y alertas de integración</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
+
+
+<!-- ══ MODELO DE TRABAJO ══ -->
+<section class="phases" id="modelo">
+  <div class="container">
+    <div class="section-eyebrow"><span class="badge badge-blue"><span class="badge-dot"></span>Cómo trabajamos</span></div>
+    <h2 class="section-title">Tres etapas para pasar de proceso<br>manual a operación automatizada</h2>
+    <div class="divider"></div>
+
+    <div class="phases-grid">
+      <div class="phase-card phase-card-1">
+        <div class="phase-num">ETAPA 01 — DIAGNÓSTICO</div>
+        <h3>Entendemos tu operación antes de tocarla</h3>
+        <p>En 2 semanas analizamos tus procesos, identificamos qué automatizar y te entregamos un plan concreto con impacto estimado.</p>
+        <ul class="phase-list">
+          <li><span class="phase-check phase-check-blue">✓</span> Entrevistas con los equipos operativos</li>
+          <li><span class="phase-check phase-check-blue">✓</span> Mapeo de procesos actuales</li>
+          <li><span class="phase-check phase-check-blue">✓</span> Detección de tareas manuales y errores frecuentes</li>
+          <li><span class="phase-check phase-check-blue">✓</span> Identificación de sistemas involucrados</li>
+          <li><span class="phase-check phase-check-blue">✓</span> Roadmap priorizado por impacto y viabilidad</li>
+        </ul>
+        <div class="phase-discount">
+          <div class="phase-discount-icon">💡</div>
+          <p>El costo del diagnóstico se descuenta íntegramente si avanzás a implementación.</p>
+        </div>
+        <button class="btn btn-dark btn-arrow" onclick="hannuxIrA('#contacto',this)">Solicitar diagnóstico </button>
+        <div class="phase-deco"></div>
+      </div>
+
+      <div class="phase-card phase-card-2">
+        <div class="phase-num">ETAPA 02 — IMPLEMENTACIÓN</div>
+        <h3>Construimos y conectamos los flujos automáticos</h3>
+        <p>Implementamos las automatizaciones priorizadas, integramos los sistemas y dejamos el proceso funcionando sin intervención humana.</p>
+        <ul class="phase-list">
+          <li><span class="phase-check phase-check-green">✓</span> Desarrollo de flujos automáticos</li>
+          <li><span class="phase-check phase-check-green">✓</span> Integración con ERP, APIs y sistemas existentes</li>
+          <li><span class="phase-check phase-check-green">✓</span> Pruebas con datos reales de la empresa</li>
+          <li><span class="phase-check phase-check-green">✓</span> Documentación del proceso automatizado</li>
+          <li><span class="phase-check phase-check-green">✓</span> Capacitación al equipo operativo</li>
+        </ul>
+        <div class="phase-discount">
+          <div class="phase-discount-icon">🚀</div>
+          <p>Entrega en fases. Las primeras automatizaciones pueden estar en producción en semanas, no meses.</p>
+        </div>
+        <button class="btn btn-outline-white btn-arrow" onclick="hannuxIrA('#contacto',this)">Consultar proyecto </button>
+        <div class="phase-deco"></div>
+      </div>
+    </div>
+
+    <div class="phases-grid-3">
+      <div class="phase-card-3">
+        <div>
+          <div class="phase-num">ETAPA 03 — EVOLUCIÓN CONTINUA</div>
+          <h3>Mejoramos y expandimos la automatización</h3>
+          <p>Una vez que el primer proceso está automatizado, extendemos la cobertura, ajustamos las reglas y sumamos nuevas integraciones según crece tu operación.</p>
+        </div>
+        <div class="phase-card-3-right">
+          <div class="p3-stat">
+            <div class="p3-stat-num">+<span>nuevos</span></div>
+            <div class="p3-stat-label">procesos cada ciclo</div>
+          </div>
+          <div class="p3-stat">
+            <div class="p3-stat-num">0<span> silos</span></div>
+            <div class="p3-stat-label">sistemas integrados</div>
+          </div>
+          <div class="p3-stat">
+            <div class="p3-stat-num">100<span>%</span></div>
+            <div class="p3-stat-label">trazabilidad operativa</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ BENEFITS / ROI ══ -->
+<section class="benefits" id="beneficios">
+  <div class="container">
+    <div class="center section-eyebrow"><span class="badge badge-blue"><span class="badge-dot"></span>Impacto en el negocio</span></div>
+    <h2 class="section-title center">Lo que cambia cuando<br>tu operación funciona sola</h2>
+    <p class="section-sub center">La automatización no es un gasto de tecnología. Es una reducción directa de horas, errores y costos operativos con retorno medible desde el primer mes.</p>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon bi-green">⚡</div>
+        <h3>Reducción de tareas manuales</h3>
+        <p>Las tareas repetitivas que ocupaban horas del equipo se ejecutan solas. El equipo se enfoca en trabajo que genera valor, no en cargar datos o copiar información entre sistemas.</p>
+        <div class="benefit-stat">↓ 70%</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon bi-blue">🎯</div>
+        <h3>Menos errores operativos</h3>
+        <p>Los procesos automáticos siguen reglas exactas sin variaciones. Se eliminan errores de tipeo, omisiones y criterios distintos según quién ejecutó el proceso ese día.</p>
+        <div class="benefit-stat">↓ 90%</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon bi-gold">🚀</div>
+        <h3>Mayor velocidad de procesamiento</h3>
+        <p>Lo que antes tomaba horas o días ahora se ejecuta en minutos. Facturas procesadas, aprobaciones emitidas, registros actualizados: todo sin esperas ni colas de trabajo pendiente.</p>
+        <div class="benefit-stat">3× más rápido</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon bi-blue">🔗</div>
+        <h3>Sistemas integrados en tiempo real</h3>
+        <p>Los datos fluyen entre herramientas automáticamente. Sin doble carga, sin sincronizaciones manuales y sin información desactualizada entre equipos o sistemas.</p>
+        <div class="benefit-stat">Sin silos</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon bi-green">📊</div>
+        <h3>Control y trazabilidad total</h3>
+        <p>Cada proceso tiene registro de quién lo ejecutó, cuándo y con qué resultado. Podés auditar, corregir o mejorar cualquier paso con datos concretos, no suposiciones.</p>
+        <div class="benefit-stat">100% trazable</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon bi-gold">💰</div>
+        <h3>ROI medible desde el primer mes</h3>
+        <p>Calculamos el retorno en horas ahorradas, errores eliminados y velocidad ganada. No es un beneficio abstracto: es un número que podés medir y comparar mes a mes.</p>
+        <div class="benefit-stat">ROI claro</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ CTA BAND ══ -->
+<section class="cta-band">
+  <div class="container">
+    <div class="cta-band-inner">
+      <h2>En <em>2 semanas</em> podés tener claridad<br>total sobre cómo automatizar tu empresa</h2>
+      <p>Analizamos tus procesos, identificamos qué automatizar primero y te entregamos un plan concreto con impacto estimado. Sin compromiso de implementación.</p>
+      <div class="cta-band-btns">
+        <button class="btn btn-primary btn-lg btn-arrow" onclick="hannuxIrA('#contacto',this)">Solicitar diagnóstico de automatización </button>
+      </div>
+      <div class="cta-features">
+        <div class="cta-feat"><span class="cta-feat-icon">✓</span> Sin compromiso de implementación</div>
+        <div class="cta-feat"><span class="cta-feat-icon">✓</span> Informe entregado en 2 semanas</div>
+        <div class="cta-feat"><span class="cta-feat-icon">✓</span> Diagnóstico descontable del proyecto</div>
+        <div class="cta-feat"><span class="cta-feat-icon">✓</span> Trabajamos con tus sistemas actuales</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ══ CONTACT ══ -->
 <section class="contact" id="contacto">
   <div class="container">
     <div class="contact-wrap">
       <div class="contact-left">
-        <span class="badge badge-blue" style="margin-bottom:16px;"><span class="badge-dot"></span>Contáctenos</span>
-        <h2>Hablemos sobre su operación</h2>
+        <span class="badge badge-blue" style="margin-bottom:16px;"><span class="badge-dot"></span>Contacto</span>
+        <h2>Hablemos sobre tu operación</h2>
         <div class="divider"></div>
-        <p>Complete el formulario y un especialista de Hanux Corp se comunicará con usted en menos de 24 horas para coordinar una primera reunión sin costo.</p>
+        <p>Completá el formulario y un especialista de Hannux Corp se comunica con vos en menos de 24 horas para coordinar una primera reunión sin costo.</p>
         <ul class="contact-info-list">
-          <li><div class="ci-icon">📧</div> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c0a8afaca180a8a1aeb5b8a3afb2b0eea3afad">[email&#160;protected]</a></li>
+          <li><div class="ci-icon">📧</div> hola@hannuxcorp.com</li>
           <li><div class="ci-icon">📱</div> +54 9 XXX XXX-XXXX</li>
           <li><div class="ci-icon">📍</div> Argentina · Remoto en toda LATAM</li>
           <li><div class="ci-icon">🕐</div> Respuesta en menos de 24 horas</li>
         </ul>
         <div class="contact-phases-note">
-          <div class="cpn-title">Podemos ayudarle en</div>
-          <div class="cpn-row"><span class="cpn-dot cpn-dot-blue"></span> Fase 1 — Diagnóstico estratégico</div>
-          <div class="cpn-row"><span class="cpn-dot cpn-dot-green"></span> Fase 2 — Implementación de automatización</div>
-          <div class="cpn-row" style="margin-top:8px;font-size:12px;color:var(--muted);">El diagnóstico se descuenta si avanza a implementación</div>
+          <div class="cpn-title">Podemos ayudarte en</div>
+          <div class="cpn-row"><span class="cpn-dot cpn-dot-blue"></span> Etapa 1 — Diagnóstico de automatización</div>
+          <div class="cpn-row"><span class="cpn-dot cpn-dot-green"></span> Etapa 2 — Implementación y escalado</div>
+          <div class="cpn-row" style="margin-top:8px;font-size:12px;color:var(--muted);">El diagnóstico se descuenta si avanzás a implementación</div>
         </div>
       </div>
 
       <div class="contact-form-box">
-        <h3>Inicia tu transformación digital</h3>
+        <h3>Solicitar diagnóstico de automatización</h3>
         <p>Primera reunión sin costo · Sin compromiso · Informe en 2 semanas</p>
-        <!-- Formulario nativo → Formspree -->
         <form action="https://formspree.io/f/xojknqwk" method="POST">
-          <input type="hidden" name="_subject" value="Diagnostico solicitado — Hanux Corp" />
+          <input type="hidden" name="_subject" value="Diagnóstico solicitado — Hannux Corp" />
           <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
           <div class="form-row">
             <div class="form-group">
               <label>Nombre *</label>
-              <input type="text" name="nombre" placeholder="Su nombre" required />
+              <input type="text" name="nombre" placeholder="Tu nombre" required />
             </div>
             <div class="form-group">
               <label>Apellido</label>
-              <input type="text" name="apellido" placeholder="Su apellido" />
+              <input type="text" name="apellido" placeholder="Tu apellido" />
             </div>
           </div>
           <div class="form-group">
             <label>Email corporativo *</label>
-            <input type="email" name="email" placeholder="nombre@empresa.com" required />
+            <input type="email" name="email" placeholder="vos@tuempresa.com" required />
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -629,11 +904,11 @@ footer{background:var(--dark);padding:56px 0 28px;}
             </div>
             <div class="form-group">
               <label>Cargo</label>
-              <input type="text" name="cargo" placeholder="Su rol en la empresa" />
+              <input type="text" name="cargo" placeholder="Tu rol en la empresa" />
             </div>
           </div>
           <div class="form-group">
-            <label>¿Cuántos empleados tiene su empresa?</label>
+            <label>¿Cuántos empleados tiene tu empresa?</label>
             <select name="empleados">
               <option value="">Seleccionar</option>
               <option>Menos de 50 empleados</option>
@@ -644,18 +919,19 @@ footer{background:var(--dark);padding:56px 0 28px;}
             </select>
           </div>
           <div class="form-group">
-            <label>¿Cuál es su principal desafío operativo?</label>
-            <textarea name="mensaje" placeholder="Describa brevemente los procesos o ineficiencias que le generan más problemas en su operación..."></textarea>
+            <label>¿Cuál es el proceso que más tiempo o errores les genera?</label>
+            <textarea name="mensaje" placeholder="Ej: cargamos facturas a mano en el ERP, los reportes de ventas se hacen en Excel y tardan 2 días, aprobaciones de compras van por email sin trazabilidad..."></textarea>
           </div>
           <button type="submit" class="form-submit">
-            Inicia tu transformación digital →
+            Solicitar diagnóstico de automatización →
           </button>
-          <p class="form-note">Al enviar acepta nuestra política de privacidad. No enviamos spam.</p>
+          <p class="form-note">Al enviar aceptás nuestra política de privacidad. No enviamos spam.</p>
         </form>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- ══ FOOTER ══ -->
 <footer>
@@ -663,48 +939,59 @@ footer{background:var(--dark);padding:56px 0 28px;}
     <div class="footer-top">
       <div class="footer-brand">
         <div class="footer-logo">
-          <img src="images/Logo_Hanux_Corp_Footer.jpg" alt="Hanux Corp" />
+          <div class="footer-logo-mark">HX</div>
+          <div class="footer-logo-name">Hannux<span> Corp</span></div>
         </div>
-        <p>Inteligencia operativa para empresas que quieren escalar con eficiencia. Analizamos, optimizamos y automatizamos su operación.</p>
+        <p>Automatización de procesos empresariales con inteligencia artificial. Sin reemplazar tus sistemas, sin humo técnico.</p>
       </div>
       <div class="footer-col">
         <h4>Servicios</h4>
         <ul>
-          <li><a href="#">Diagnóstico estratégico</a></li>
-          <li><a href="#">Automatización de procesos</a></li>
-          <li><a href="#">Integración de sistemas</a></li>
-          <li><a href="#">IA aplicada</a></li>
+          <li><a href="#servicios">Automatización de procesos</a></li>
+          <li><a href="#servicios">Inteligencia documental (IA)</a></li>
+          <li><a href="#servicios">Integración de sistemas</a></li>
+          <li><a href="#contacto">Diagnóstico inicial</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Empresa</h4>
         <ul>
-          <li><a href="#">Metodología HPIF</a></li>
-          <li><a href="#">Casos de éxito</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contacto</a></li>
+          <li><a href="#enfoque">Nuestro enfoque</a></li>
+          <li><a href="#caso">Caso: facturas con IA</a></li>
+          <li><a href="#modelo">Modelo de trabajo</a></li>
+          <li><a href="#contacto">Contacto</a></li>
         </ul>
       </div>
       <div class="footer-col">
         <h4>Contacto</h4>
         <ul>
-          <li><a href="#"><span class="__cf_email__" data-cfemail="95fdfaf9f4d5fdf4fbe0edf6fae7e5bbf6faf8">[email&#160;protected]</span></a></li>
+          <li><a href="mailto:hola@hannuxcorp.com">hola@hannuxcorp.com</a></li>
           <li><a href="#">LinkedIn</a></li>
           <li><a href="#">Política de privacidad</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>© 2025 Hanux Corp · Todos los derechos reservados</span>
-      <span>Diagnóstico · Automatización · IA · Integración</span>
+      <span>© 2025 Hannux Corp · Todos los derechos reservados</span>
+      <span>Automatización · IA · Integración · ERP</span>
     </div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-function hanuxIrA(destino, btn) {
+
+<script>
+function hannuxIrA(destino, btn) {
   if (btn) {
     btn.classList.add("active");
     setTimeout(function() { btn.classList.remove("active"); }, 700);
   }
-  var el = docum
+  var el = document.querySelector(destino);
+  if (el) {
+    var top = el.getBoundingClientRect().top + window.pageYOffset - 80;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+}
+</script>
+
+</body>
+</html>
